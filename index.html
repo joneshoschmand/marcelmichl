@@ -1,877 +1,995 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Marcel Michl Immobilien — Würzburg &amp; Mainfranken</title>
-<meta name="description" content="Marcel Michl Immobilien: Diskrete Vermittlung exklusiver Wohn- und Anlageimmobilien in Würzburg und Mainfranken.">
+<title>marcel michl — International Real Estate</title>
+<meta name="description" content="Beyond Frontiers. Beside You. Marcel Michl — international real estate. Five selected properties each year. Each one personal.">
+<meta property="og:title" content="marcel michl — International Real Estate">
+<meta property="og:description" content="Beyond Frontiers. Beside You. Your real estate partner in a world without borders.">
+<meta property="og:image" content="assets/residence-01.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" href="assets/logo.png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+
 <style>
+/* ============================================================
+   marcel michl — International Real Estate
+   Typography system: Poppins (as carolynmurphy.com)
+   ============================================================ */
 :root{
-  --paper:#FFFFFF;
-  --paper-warm:#F7F6F3;
-  --ink:#111111;
-  --ink-soft:#4B4B4B;
-  --grey:#8A8A8A;
-  --line:#E3E1DD;
-  --line-dark:rgba(255,255,255,.16);
-  --black:#0A0A0A;
-  --black-soft:#141414;
+  --paper:#ffffff;
+  --paper-soft:#FAF9F7;
+  --stone:#E4DDCF;          /* taken from the portrait backdrop */
+  --stone-deep:#D6CDBB;
+  --ink:#0B0B0B;
+  --ink-2:#2B2B2B;
+  --muted:#6F6F6F;
+  --muted-2:#9A9A9A;
+  --line:#E6E3DE;
+  --night:#0A0A0A;
+  --night-2:#141414;
   --ease:cubic-bezier(.22,.9,.24,1);
-  --nav-h:88px;
+  --nav-h:84px;
+  --pad:clamp(1.5rem,5vw,5rem);
 }
+
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{
-  font-family:'Montserrat',sans-serif;
+  font-family:'Poppins',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
   font-weight:300;
-  font-size:15px;
+  font-size:16px;
   line-height:1.8;
-  color:var(--ink-soft);
+  color:var(--ink);
   background:var(--paper);
   overflow-x:hidden;
   -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
 }
-img{display:block;max-width:100%}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 ::selection{background:var(--ink);color:var(--paper)}
 
-/* ---------- Typografie ---------- */
-h1,h2,h3,.display{
-  font-family:'Playfair Display',serif;font-weight:400;color:var(--ink);
-  line-height:1.14;letter-spacing:-.015em;
-}
-h1{font-size:clamp(2.4rem,5.6vw,4.4rem)}
-h2{font-size:clamp(1.9rem,3.6vw,2.9rem)}
-h3{font-size:1.3rem;letter-spacing:0}
-.eyebrow{
-  font-size:.72rem;font-weight:400;letter-spacing:.26em;text-transform:uppercase;
-  color:var(--grey);display:block;margin-bottom:1.4rem;
-}
-.lede{font-size:1.02rem;max-width:60ch}
-.on-dark{color:rgba(255,255,255,.68)}
-.on-dark h1,.on-dark h2,.on-dark h3,.on-dark .display{color:#fff}
-.on-dark .eyebrow{color:rgba(255,255,255,.55)}
+/* ---------- type scale ---------- */
+h1,h2,h3,h4{font-weight:500;line-height:1.2;letter-spacing:-.01em}
+.h-xl{font-size:clamp(2.1rem,5vw,4rem);font-weight:500;line-height:1.16}
+.h-lg{font-size:clamp(1.7rem,3.4vw,2.65rem);font-weight:500;line-height:1.25}
+.h-md{font-size:clamp(1.25rem,2vw,1.6rem);font-weight:500;line-height:1.35}
 
-/* ---------- Preloader ---------- */
+.eyebrow{
+  font-size:.68rem;font-weight:400;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--muted-2);display:block;
+}
+.lede{font-size:clamp(1rem,1.25vw,1.18rem);font-weight:300;line-height:1.85;color:var(--ink-2)}
+.soft{color:var(--muted)}
+.center{text-align:center}
+.measure{max-width:58ch}
+.measure-narrow{max-width:44ch}
+.mx{margin-left:auto;margin-right:auto}
+
+.wrap{width:100%;max-width:1320px;margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
+.wrap-narrow{width:100%;max-width:880px;margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
+section{position:relative}
+.pad-y{padding-block:clamp(5.5rem,12vw,11rem)}
+.pad-y-sm{padding-block:clamp(4rem,8vw,7rem)}
+
+.rule{height:1px;background:var(--line);border:0}
+
+/* ============================================================
+   Scroll progress
+   ============================================================ */
+#progress{
+  position:fixed;top:0;left:0;height:2px;width:100%;z-index:1200;
+  transform:scaleX(0);transform-origin:0 50%;
+  background:var(--ink);opacity:.85;
+  transition:transform .1s linear;
+}
+body.on-dark-nav #progress{background:#fff}
+
+/* ============================================================
+   Preloader
+   ============================================================ */
 #loader{
-  position:fixed;inset:0;background:var(--black);z-index:1000;
-  display:flex;align-items:center;justify-content:center;
-  transition:opacity .9s var(--ease),visibility .9s;
+  position:fixed;inset:0;z-index:2000;background:var(--night);
+  display:grid;place-items:center;
+  transition:opacity .8s var(--ease),visibility .8s var(--ease);
 }
 #loader.done{opacity:0;visibility:hidden}
-#loader .mark{
-  font-family:'Playfair Display',serif;color:#fff;font-size:2rem;
-  letter-spacing:.3em;padding-left:.3em;opacity:.9;
-  animation:breathe 1.8s ease-in-out infinite;
-}
-@keyframes breathe{0%,100%{opacity:.3}50%{opacity:1}}
+#loader img{width:min(240px,50vw);filter:invert(1);opacity:.9;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:.25}50%{opacity:.95}}
 
-/* ---------- Navigation ---------- */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:900;
-  display:flex;justify-content:space-between;align-items:center;
-  height:var(--nav-h);padding:0 clamp(1.4rem,4vw,3.5rem);
-  transition:background .5s var(--ease),height .5s var(--ease),box-shadow .5s var(--ease);
+/* ============================================================
+   Navigation
+   ============================================================ */
+header.nav{
+  position:fixed;inset:0 0 auto 0;z-index:1100;height:var(--nav-h);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 var(--pad);
+  transition:background .5s var(--ease),height .5s var(--ease),border-color .5s var(--ease);
+  border-bottom:1px solid transparent;
 }
-nav.scrolled{
-  background:rgba(255,255,255,.97);backdrop-filter:blur(12px);
-  height:70px;box-shadow:0 1px 0 var(--line);
+header.nav.scrolled{
+  height:68px;background:rgba(255,255,255,.94);
+  backdrop-filter:saturate(180%) blur(14px);
+  -webkit-backdrop-filter:saturate(180%) blur(14px);
+  border-bottom-color:var(--line);
 }
-.brand{display:flex;align-items:center;gap:.95rem;text-decoration:none}
-.monogram{
-  position:relative;display:flex;align-items:center;gap:.55rem;
-  font-family:'Playfair Display',serif;font-size:1.05rem;color:#fff;
-  transition:color .4s var(--ease);
+.brand{display:flex;align-items:center;flex:0 0 auto}
+.brand img{
+  height:34px;width:auto;
+  filter:invert(1);
+  transition:filter .45s var(--ease),height .45s var(--ease);
 }
-.monogram i{
-  width:1px;height:30px;background:currentColor;opacity:.75;
-  transform:rotate(22deg);display:block;
-}
-.monogram span:first-child{align-self:flex-start}
-.monogram span:last-child{align-self:flex-end}
-.wordmark{
-  font-family:'Playfair Display',serif;font-size:1.12rem;letter-spacing:.22em;
-  text-transform:uppercase;color:#fff;transition:color .4s var(--ease);
-}
-nav.scrolled .monogram,nav.scrolled .wordmark,
-nav.menu-open .monogram,nav.menu-open .wordmark{color:var(--ink)}
-.nav-links{display:flex;gap:2.2rem;list-style:none;align-items:center}
-.nav-links a{
-  color:#fff;text-decoration:none;font-size:.73rem;font-weight:400;
-  letter-spacing:.2em;text-transform:uppercase;position:relative;padding:.4rem 0;
-  transition:color .4s var(--ease),opacity .3s;
-}
-nav.scrolled .nav-links a{color:var(--ink)}
-.nav-links a::after{
-  content:'';position:absolute;left:0;bottom:0;height:1px;width:0;
-  background:currentColor;transition:width .4s var(--ease);
-}
-.nav-links a:hover::after,.nav-links a:focus-visible::after{width:100%}
-.burger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:6px;padding:6px}
-.burger span{width:24px;height:1px;background:#fff;transition:.4s var(--ease)}
-nav.scrolled .burger span{background:var(--ink)}
+header.nav.scrolled .brand img{filter:none;height:30px}
 
-/* ---------- Buttons ---------- */
-.btn{
-  display:inline-flex;align-items:center;gap:.9rem;
-  padding:1.05rem 2.3rem;font-family:'Montserrat',sans-serif;font-weight:400;
-  font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;
-  text-decoration:none;cursor:pointer;border:1px solid var(--ink);
-  background:var(--ink);color:#fff;transition:all .45s var(--ease);
+.menu{display:flex;align-items:center;gap:clamp(1.1rem,2.2vw,2.3rem)}
+.menu a{
+  font-size:.7rem;font-weight:400;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(255,255,255,.82);position:relative;padding-block:.4rem;
+  transition:color .35s var(--ease);
 }
-.btn:hover{background:transparent;color:var(--ink)}
-.btn::after{content:'›';font-size:1.1em;line-height:1;transform:translateY(-1px)}
-.btn-outline{background:transparent;color:#fff;border-color:rgba(255,255,255,.6)}
-.btn-outline:hover{background:#fff;color:var(--ink);border-color:#fff}
-.btn-ink-outline{background:transparent;color:var(--ink)}
-.btn-ink-outline:hover{background:var(--ink);color:#fff}
-.link-more{
-  display:inline-flex;align-items:center;gap:.7rem;font-size:.72rem;letter-spacing:.22em;
-  text-transform:uppercase;color:var(--ink);text-decoration:none;padding-bottom:.4rem;
-  border-bottom:1px solid var(--line);transition:border-color .4s var(--ease)
+header.nav.scrolled .menu a{color:var(--ink-2)}
+.menu a::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:1px;
+  background:currentColor;transform:scaleX(0);transform-origin:100% 50%;
+  transition:transform .45s var(--ease);
 }
-.link-more:hover{border-color:var(--ink)}
+.menu a:hover::after,.menu a[aria-current="true"]::after{transform:scaleX(1);transform-origin:0 50%}
 
-/* ---------- Hero ---------- */
-header{
-  position:relative;min-height:100svh;display:flex;align-items:center;justify-content:center;
-  background:var(--black);overflow:hidden;text-align:center;
+.burger{display:none;width:34px;height:34px;position:relative;z-index:1101}
+.burger span{
+  position:absolute;left:5px;right:5px;height:1.5px;background:#fff;
+  transition:transform .4s var(--ease),opacity .3s var(--ease),background .4s var(--ease);
 }
-.hero-media{position:absolute;inset:0;z-index:0;overflow:hidden}
-.hero-bg{
-  position:absolute;inset:-4%;
-  background:url('images/ChatGPT%20Image%208.%20Aug.%202026%2C%2014_13_06.png') center 42%/cover no-repeat;
-  transform:scale(1.04);animation:kenburns 26s var(--ease) infinite alternate;
-  will-change:transform;
+.burger span:nth-child(1){top:12px}
+.burger span:nth-child(2){bottom:12px}
+header.nav.scrolled .burger span{background:var(--ink)}
+body.menu-open .burger span{background:#fff}
+body.menu-open .burger span:nth-child(1){transform:translateY(5px) rotate(45deg)}
+body.menu-open .burger span:nth-child(2){transform:translateY(-5px) rotate(-45deg)}
+
+#mobile-menu{
+  position:fixed;inset:0;z-index:1090;background:var(--night);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.6rem;
+  opacity:0;visibility:hidden;transition:opacity .5s var(--ease),visibility .5s var(--ease);
 }
-@keyframes kenburns{from{transform:scale(1.04)}to{transform:scale(1.14)}}
-.hero-scrim{
-  position:absolute;inset:0;z-index:1;pointer-events:none;
+body.menu-open #mobile-menu{opacity:1;visibility:visible}
+#mobile-menu a{
+  font-size:1.05rem;font-weight:300;letter-spacing:.24em;text-transform:uppercase;color:#fff;
+  opacity:0;transform:translateY(14px);transition:opacity .5s var(--ease),transform .5s var(--ease);
+}
+body.menu-open #mobile-menu a{opacity:.9;transform:none}
+body.menu-open #mobile-menu a:nth-child(1){transition-delay:.10s}
+body.menu-open #mobile-menu a:nth-child(2){transition-delay:.16s}
+body.menu-open #mobile-menu a:nth-child(3){transition-delay:.22s}
+body.menu-open #mobile-menu a:nth-child(4){transition-delay:.28s}
+body.menu-open #mobile-menu a:nth-child(5){transition-delay:.34s}
+body.menu-open #mobile-menu a:nth-child(6){transition-delay:.40s}
+
+@media (max-width:920px){
+  .menu{display:none}
+  .burger{display:block}
+}
+
+/* ============================================================
+   Hero
+   ============================================================ */
+.hero{
+  position:relative;min-height:100svh;display:grid;align-items:end;
+  background:var(--night);overflow:hidden;isolation:isolate;
+}
+.hero__media{position:absolute;inset:-8% 0 -8% 0;z-index:-2;will-change:transform}
+.hero__media img{width:100%;height:100%;object-fit:cover;object-position:center 58%}
+.hero::before{
+  content:"";position:absolute;inset:0;z-index:-1;
   background:
-    radial-gradient(ellipse 78% 58% at 50% 46%,rgba(10,10,10,.55) 0%,rgba(10,10,10,0) 100%),
-    linear-gradient(180deg,rgba(10,10,10,.66) 0%,rgba(10,10,10,.34) 42%,rgba(10,10,10,.62) 100%);
+    linear-gradient(180deg,rgba(0,0,0,.66) 0%,rgba(0,0,0,.18) 34%,rgba(0,0,0,.30) 62%,rgba(0,0,0,.88) 100%);
 }
-.hero-inner{
-  position:relative;z-index:2;max-width:1000px;width:100%;
-  padding:calc(var(--nav-h) + 3rem) clamp(1.4rem,5vw,3rem) 8rem;
+.hero__inner{
+  width:100%;max-width:1320px;margin:0 auto;
+  padding:calc(var(--nav-h) + 3rem) var(--pad) clamp(3.5rem,8vh,6rem);
+  color:#fff;
 }
-.hero-inner h1{color:#fff;letter-spacing:-.02em}
-.hero-inner h1 em{font-style:italic}
-.hero-line{display:block;overflow:hidden}
-.hero-line span{display:inline-block;transform:translateY(105%);animation:rise 1.15s var(--ease) forwards}
-.hero-line:nth-child(2) span{animation-delay:.14s}
-@keyframes rise{to{transform:translateY(0)}}
-.hero-sub{
-  margin-top:2.2rem;font-size:.76rem;letter-spacing:.36em;text-transform:uppercase;
-  color:rgba(255,255,255,.85);line-height:2.4;
-  opacity:0;animation:fadeUp 1.1s var(--ease) .65s forwards;
+.hero__tagline{
+  font-size:clamp(2.4rem,7vw,5.6rem);font-weight:500;line-height:1.05;letter-spacing:-.02em;
+  max-width:16ch;
 }
-.hero-cta{
-  margin-top:3rem;display:inline-flex;gap:1rem;flex-wrap:wrap;justify-content:center;
-  opacity:0;animation:fadeUp 1.1s var(--ease) .9s forwards;
+.hero__tagline em{font-style:normal;display:block;font-weight:200;color:rgba(255,255,255,.88)}
+.hero__sub{
+  margin-top:1.6rem;font-size:clamp(.95rem,1.4vw,1.12rem);font-weight:300;
+  color:rgba(255,255,255,.78);max-width:42ch;line-height:1.75;
 }
-@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.hero__meta{
+  margin-top:2.6rem;display:flex;flex-wrap:wrap;align-items:center;gap:1.6rem 2.4rem;
+}
+.hero__demand{
+  font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.62);
+}
 .scroll-cue{
-  position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:2;
-  display:flex;flex-direction:column;align-items:center;gap:.9rem;
-  font-size:.62rem;letter-spacing:.32em;text-transform:uppercase;color:rgba(255,255,255,.65);
+  position:absolute;right:var(--pad);bottom:clamp(3.5rem,8vh,6rem);
+  display:flex;flex-direction:column;align-items:center;gap:.9rem;z-index:2;
+  font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.5);
+  writing-mode:vertical-rl;
 }
-.scroll-cue::after{
-  content:'';width:1px;height:44px;background:rgba(255,255,255,.5);
-  animation:drop 2.4s var(--ease) infinite;
-}
-@keyframes drop{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
-@media(max-height:760px){.scroll-cue{display:none}}
+.scroll-cue i{writing-mode:horizontal-tb}
+@media (max-width:860px){.scroll-cue{display:none}}
+.scroll-cue i{display:block;width:1px;height:52px;background:linear-gradient(180deg,rgba(255,255,255,.55),transparent);animation:cue 2.4s var(--ease) infinite}
+@keyframes cue{0%{transform:scaleY(0);transform-origin:0 0}45%{transform:scaleY(1);transform-origin:0 0}55%{transform:scaleY(1);transform-origin:0 100%}100%{transform:scaleY(0);transform-origin:0 100%}}
 
-/* ---------- Sections ---------- */
-section{padding:clamp(5rem,11vw,9.5rem) clamp(1.4rem,5vw,3.5rem)}
-.wrap{max-width:1240px;margin:0 auto}
-.narrow{max-width:920px;margin:0 auto}
-.dark{background:var(--black)}
-.warm{background:var(--paper-warm)}
-.section-head{max-width:680px;margin-bottom:clamp(3rem,6vw,4.5rem)}
-.section-head.center{margin-left:auto;margin-right:auto;text-align:center}
-.section-head p{margin-top:1.6rem}
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;gap:.85rem;
+  font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;font-weight:400;
+  padding:1.05rem 2.1rem;border:1px solid currentColor;
+  position:relative;overflow:hidden;transition:color .45s var(--ease);
+}
+.btn span{position:relative;z-index:1}
+.btn::before{
+  content:"";position:absolute;inset:0;background:currentColor;
+  transform:scaleX(0);transform-origin:100% 50%;transition:transform .55s var(--ease);
+}
+.btn:hover::before{transform:scaleX(1);transform-origin:0 50%}
+.btn--light{color:#fff}
+.btn--light:hover{color:var(--night)}
+.btn--dark{color:var(--ink)}
+.btn--dark:hover{color:#fff}
 
-/* reveal */
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .95s var(--ease),transform .95s var(--ease)}
-.reveal.in{opacity:1;transform:none}
-.reveal.d1{transition-delay:.1s}.reveal.d2{transition-delay:.2s}.reveal.d3{transition-delay:.3s}
-
-/* ---------- Über mich ---------- */
-.about{display:grid;grid-template-columns:.85fr 1fr;gap:clamp(2.5rem,7vw,6.5rem);align-items:center}
-.portrait{position:relative;overflow:hidden;background:var(--black-soft);aspect-ratio:4/5}
-.portrait img{width:100%;height:100%;object-fit:cover;object-position:center 38%;transition:transform 1.2s var(--ease)}
-.portrait:hover img{transform:scale(1.04)}
-.about-text p{margin-bottom:1.5rem;max-width:56ch}
-.sig{
-  font-family:'Playfair Display',serif;font-style:italic;font-size:1.5rem;
-  color:#fff;margin-top:2rem;
+/* ============================================================
+   Film title cards  (cinematic, sticky)
+   ============================================================ */
+.film{height:175vh;position:relative;background:var(--paper)}
+@media (max-width:860px){.film{height:150vh}}
+.film__stage{
+  position:sticky;top:0;height:100svh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  overflow:hidden;padding:0 var(--pad);background:var(--paper);
 }
-.sig small{
-  display:block;font-family:'Montserrat',sans-serif;font-style:normal;font-size:.68rem;
-  letter-spacing:.26em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-top:.6rem;
+.film__title{
+  position:relative;z-index:1;text-align:center;color:var(--ink);
+  font-size:clamp(1.9rem,6.2vw,5.2rem);font-weight:600;line-height:1.08;
+  letter-spacing:-.01em;text-transform:uppercase;
+  will-change:transform,opacity;
 }
-
-/* ---------- Objekte ---------- */
-.listings{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(2rem,4vw,3.5rem) clamp(1.6rem,3vw,2.6rem)}
-.listing{cursor:pointer;background:none;border:none;padding:0;text-align:left;font:inherit;color:inherit;display:block;width:100%}
-.listing-media{position:relative;overflow:hidden;aspect-ratio:3/2;background:var(--paper-warm)}
-.listing-media .bg{
-  position:absolute;inset:0;background-size:cover;background-position:center;
-  transition:transform 1.3s var(--ease);
-}
-.listing:hover .bg,.listing:focus-visible .bg{transform:scale(1.05)}
-.listing-media::after{
-  content:'';position:absolute;inset:0;background:rgba(10,10,10,0);
-  transition:background .6s var(--ease);
-}
-.listing:hover .listing-media::after{background:rgba(10,10,10,.10)}
-.listing-body{padding-top:1.5rem}
-.listing .status{
-  font-size:.66rem;letter-spacing:.26em;text-transform:uppercase;color:var(--grey);
-}
-.listing h3{margin:.85rem 0 .7rem;font-size:clamp(1.35rem,2.2vw,1.75rem)}
-.listing h3 .sep{color:var(--line);padding:0 .35em}
-.listing .facts{font-size:.82rem;letter-spacing:.05em;color:var(--ink-soft)}
-.listing .cue{
-  display:inline-block;margin-top:1rem;font-size:.66rem;letter-spacing:.24em;
-  text-transform:uppercase;color:var(--ink);border-bottom:1px solid var(--line);
-  padding-bottom:.3rem;transition:border-color .4s var(--ease);
-}
-.listing:hover .cue{border-color:var(--ink)}
-
-/* ---------- Zahlen ---------- */
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
-.stat{padding:0 clamp(1rem,3vw,2.5rem);text-align:center;border-left:1px solid var(--line-dark)}
-.stat:first-child{border-left:none}
-.stat .num{
-  font-family:'Playfair Display',serif;font-size:clamp(2.6rem,5.5vw,4rem);
-  color:#fff;line-height:1;letter-spacing:-.02em;
-}
-.stat .num sup{font-size:.4em;vertical-align:super;opacity:.6}
-.stat .label{
-  margin-top:1.1rem;font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;
-  color:rgba(255,255,255,.6);line-height:1.9;
+.film__title span{display:block}
+.film__title span+span{font-weight:200;color:var(--muted)}
+.film__kicker{
+  position:relative;z-index:1;text-align:center;margin-top:2.2rem;
+  font-size:.66rem;letter-spacing:.34em;text-transform:uppercase;color:var(--muted-2);
+  will-change:transform,opacity;
 }
 
-/* ---------- Leistungen ---------- */
-.services{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(2rem,4vw,3.5rem)}
-.service{padding-top:1.8rem;border-top:1px solid var(--line)}
-.service .no{
-  font-size:.66rem;letter-spacing:.26em;color:var(--grey);display:block;margin-bottom:1rem;
-}
-.service h3{margin-bottom:.9rem}
-.service p{font-size:.92rem}
+/* ============================================================
+   Editorial blocks
+   ============================================================ */
+.stack > * + *{margin-top:1.45rem}
+.stack-lg > * + *{margin-top:2.2rem}
 
-/* ---------- Kontakt ---------- */
-.contact{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(2.5rem,7vw,6rem)}
-.contact-meta{margin-top:2.5rem;display:grid;gap:1.6rem}
-.contact-meta div{padding-top:1rem;border-top:1px solid var(--line)}
-.contact-meta .k{font-size:.66rem;letter-spacing:.26em;text-transform:uppercase;color:var(--grey)}
-.contact-meta .v{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--ink);margin-top:.3rem;line-height:1.4}
-.contact-meta .v a{color:inherit;text-decoration:none;border-bottom:1px solid var(--line);transition:border-color .3s}
-.contact-meta .v a:hover{border-color:var(--ink)}
-form{display:grid;gap:1.8rem}
+.split{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:clamp(2.5rem,6vw,6rem);align-items:center;
+}
+@media (max-width:860px){.split{grid-template-columns:1fr}}
+
+.quiet-list{list-style:none}
+.quiet-list li{
+  padding:1.05rem 0;border-bottom:1px solid var(--line);
+  font-size:1.02rem;font-weight:300;color:var(--ink-2);
+  display:flex;align-items:baseline;gap:1.2rem;
+}
+.quiet-list li:first-child{border-top:1px solid var(--line)}
+.quiet-list li b{
+  font-size:.62rem;font-weight:400;letter-spacing:.2em;color:var(--muted-2);
+  min-width:2.2rem;
+}
+
+/* poetic paragraph lines */
+.verse{font-size:clamp(1.02rem,1.5vw,1.3rem);font-weight:300;line-height:2.05;color:var(--ink-2)}
+.verse em{font-style:normal;color:var(--ink);font-weight:400}
+
+/* ============================================================
+   FIVE — dark counter section
+   ============================================================ */
+.five{background:var(--night);color:#fff;overflow:hidden}
+.five .eyebrow{color:rgba(255,255,255,.42)}
+.five__grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(2.5rem,6vw,6rem);align-items:center}
+@media (max-width:860px){.five__grid{grid-template-columns:1fr}}
+.five__num{
+  font-size:clamp(7rem,22vw,17rem);font-weight:200;line-height:.82;letter-spacing:-.05em;
+  color:#fff;position:relative;
+}
+.five__num::after{
+  content:"";display:block;width:clamp(60px,10vw,120px);height:1px;
+  background:rgba(255,255,255,.3);margin-top:clamp(1.5rem,3vw,2.6rem);
+}
+.five__label{
+  margin-top:1.4rem;font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;
+  color:rgba(255,255,255,.5);
+}
+.five p{color:rgba(255,255,255,.72)}
+.five .verse em{color:#fff}
+.five .verse{color:rgba(255,255,255,.75)}
+
+/* ============================================================
+   About Marcel  (layout after the reference screenshot)
+   ============================================================ */
+.about{background:var(--paper);overflow:hidden}
+.about__grid{
+  display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);
+  align-items:stretch;gap:0;
+  max-width:1320px;margin:0 auto;
+}
+.about__figure{
+  position:relative;background:var(--stone);
+  display:flex;align-items:flex-end;justify-content:center;
+  min-height:clamp(420px,62vw,720px);
+}
+.about__figure img{
+  width:100%;height:100%;object-fit:cover;object-position:center 12%;
+  mix-blend-mode:multiply;
+}
+.about__body{
+  padding:clamp(2.5rem,6vw,5.5rem) clamp(1.5rem,5vw,5rem);
+  display:flex;flex-direction:column;justify-content:center;
+  background:var(--paper);
+}
+.about__title{
+  font-family:'Poppins',sans-serif;
+  font-size:clamp(2.3rem,5.4vw,4.2rem);
+  font-weight:600;letter-spacing:-.025em;line-height:1;
+  color:#3C3A35;
+  margin-bottom:clamp(1.8rem,3.5vw,2.8rem);
+}
+.about__title small{
+  display:block;font-size:.6rem;font-weight:400;letter-spacing:.34em;
+  color:var(--muted-2);margin-bottom:1.1rem;text-transform:uppercase;
+}
+.about__body p{
+  font-size:clamp(.98rem,1.2vw,1.08rem);font-weight:300;line-height:1.92;color:var(--ink-2);
+  max-width:46ch;
+}
+.about__body p + p{margin-top:1.4rem}
+.about__sign{
+  margin-top:clamp(2rem,4vw,3rem);padding-top:1.6rem;border-top:1px solid var(--line);
+  font-size:.64rem;letter-spacing:.28em;text-transform:uppercase;color:var(--muted-2);
+}
+@media (max-width:860px){
+  .about__grid{grid-template-columns:1fr}
+  .about__figure{min-height:clamp(380px,86vw,560px)}
+}
+
+/* ============================================================
+   Visibility — channel grid
+   ============================================================ */
+.channels{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  border-top:1px solid var(--line);
+}
+.channels div{
+  padding:clamp(1.8rem,3vw,2.6rem) clamp(1.2rem,2vw,2rem);
+  border-bottom:1px solid var(--line);border-right:1px solid var(--line);
+  transition:background .5s var(--ease);
+}
+.channels div:nth-child(4n){border-right:0}
+@media (max-width:860px){
+  .channels{grid-template-columns:repeat(2,1fr)}
+  .channels div:nth-child(4n){border-right:1px solid var(--line)}
+  .channels div:nth-child(2n){border-right:0}
+}
+@media (max-width:480px){
+  .channels{grid-template-columns:1fr}
+  .channels div,.channels div:nth-child(4n),.channels div:nth-child(2n){border-right:0}
+}
+.channels div:hover{background:var(--paper-soft)}
+.channels b{
+  display:block;font-size:.6rem;font-weight:400;letter-spacing:.26em;
+  color:var(--muted-2);margin-bottom:.9rem;
+}
+.channels h4{font-size:1.02rem;font-weight:400;color:var(--ink);letter-spacing:0}
+
+/* ============================================================
+   Selected real estate — image grid (Carolyn Murphy feel)
+   ============================================================ */
+.tiles{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:clamp(2rem,4vw,3.6rem) clamp(1.2rem,2.2vw,2.2rem);
+}
+@media (max-width:1000px){.tiles{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.tiles{grid-template-columns:1fr;max-width:420px;margin-inline:auto}}
+.tile figure{overflow:hidden;background:var(--paper-soft);aspect-ratio:4/3}
+.tile img{
+  width:100%;height:100%;object-fit:cover;
+  transform:scale(1.001);transition:transform 1.4s var(--ease),filter 1.4s var(--ease);
+  filter:saturate(.92);
+}
+.tile:hover img{transform:scale(1.07);filter:saturate(1.02)}
+.tile h3{
+  margin-top:1.5rem;text-align:center;font-size:1.22rem;font-weight:500;letter-spacing:-.005em;
+}
+.tile p{
+  margin-top:.7rem;text-align:center;font-size:.92rem;font-weight:300;color:var(--muted);
+  max-width:34ch;margin-left:auto;margin-right:auto;line-height:1.8;
+}
+
+/* ============================================================
+   Contact
+   ============================================================ */
+.contact{background:var(--night);color:#fff}
+.contact .eyebrow{color:rgba(255,255,255,.42)}
+.contact h2{color:#fff}
+.contact .verse{color:rgba(255,255,255,.72)}
+.contact .verse em{color:#fff}
+
+.form{display:grid;gap:1.6rem;margin-top:clamp(2.5rem,5vw,3.5rem)}
+.form .row{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem}
+@media (max-width:640px){.form .row{grid-template-columns:1fr}}
 .field{position:relative}
-.field input,.field textarea{
-  width:100%;background:transparent;border:none;border-bottom:1px solid var(--line);
-  padding:1rem 0 .8rem;font-family:'Montserrat',sans-serif;font-weight:300;font-size:.95rem;
-  color:var(--ink);border-radius:0;-webkit-appearance:none;transition:border-color .4s var(--ease);
-}
-.field textarea{min-height:120px;resize:vertical}
 .field label{
-  position:absolute;left:0;top:1rem;pointer-events:none;color:var(--grey);
-  font-size:.95rem;transition:all .35s var(--ease);
+  display:block;font-size:.6rem;letter-spacing:.26em;text-transform:uppercase;
+  color:rgba(255,255,255,.45);margin-bottom:.7rem;
 }
-.field input:focus,.field textarea:focus{outline:none;border-color:var(--ink)}
-.field input:focus + label,.field input:not(:placeholder-shown) + label,
-.field textarea:focus + label,.field textarea:not(:placeholder-shown) + label{
-  top:-.65rem;font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink);
+.field input,.field textarea{
+  width:100%;background:transparent;border:0;border-bottom:1px solid rgba(255,255,255,.22);
+  color:#fff;font-family:inherit;font-size:1rem;font-weight:300;padding:.65rem 0;
+  transition:border-color .4s var(--ease);
 }
-.consent{display:flex;gap:.9rem;align-items:flex-start;font-size:.82rem;line-height:1.7}
-.consent input{margin-top:.4rem;accent-color:var(--ink);width:15px;height:15px;flex-shrink:0}
-.consent a{color:var(--ink)}
-.form-note{font-size:.75rem;color:var(--grey)}
-.hp{position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden}
-#form-status{font-size:.88rem;color:var(--ink);min-height:1.4em}
-form .btn{justify-self:start}
-form .btn:disabled{opacity:.45;cursor:not-allowed}
+.field textarea{resize:vertical;min-height:120px;line-height:1.8}
+.field input:focus,.field textarea:focus{outline:none;border-bottom-color:rgba(255,255,255,.75)}
+.field input::placeholder,.field textarea::placeholder{color:rgba(255,255,255,.28)}
+.form__foot{display:flex;flex-wrap:wrap;align-items:center;gap:1.5rem 2rem;margin-top:.8rem}
+.form__note{font-size:.72rem;color:rgba(255,255,255,.4);line-height:1.7;max-width:40ch}
 
-/* ---------- Footer ---------- */
-footer{background:var(--black);color:rgba(255,255,255,.55);padding:clamp(3.5rem,7vw,5.5rem) clamp(1.4rem,5vw,3.5rem) 2.5rem}
-.foot-grid{
-  max-width:1240px;margin:0 auto;display:grid;
-  grid-template-columns:1.4fr 1fr 1fr;gap:clamp(2rem,5vw,4rem);
-  padding-bottom:3rem;border-bottom:1px solid var(--line-dark);
+.contact__direct{
+  margin-top:clamp(3rem,6vw,4.5rem);padding-top:clamp(2rem,4vw,3rem);
+  border-top:1px solid rgba(255,255,255,.14);
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));
+  gap:2rem;
 }
-.foot-brand .wordmark{color:#fff}
-.foot-brand p{font-size:.85rem;margin-top:1.4rem;max-width:34ch;color:rgba(255,255,255,.5)}
-.foot-col h4{
-  font-family:'Montserrat',sans-serif;font-size:.66rem;letter-spacing:.26em;text-transform:uppercase;
-  color:rgba(255,255,255,.45);margin-bottom:1.4rem;font-weight:400;
+.contact__direct b{
+  display:block;font-size:.6rem;font-weight:400;letter-spacing:.26em;text-transform:uppercase;
+  color:rgba(255,255,255,.4);margin-bottom:.7rem;
 }
-.foot-col ul{list-style:none;display:grid;gap:.8rem}
-.foot-col a,.foot-col button{
-  background:none;border:none;padding:0;cursor:pointer;text-align:left;
-  font-family:'Montserrat',sans-serif;font-weight:300;font-size:.85rem;
-  color:rgba(255,255,255,.65);text-decoration:none;transition:color .3s;
-}
-.foot-col a:hover,.foot-col button:hover{color:#fff}
-.foot-bottom{
-  max-width:1240px;margin:2rem auto 0;display:flex;justify-content:space-between;
-  gap:1.5rem;flex-wrap:wrap;font-size:.72rem;letter-spacing:.06em;color:rgba(255,255,255,.4);
-}
+.contact__direct a,.contact__direct span{font-size:1rem;font-weight:300;color:rgba(255,255,255,.88)}
+.contact__direct a{border-bottom:1px solid rgba(255,255,255,.2);padding-bottom:2px;transition:border-color .4s var(--ease)}
+.contact__direct a:hover{border-bottom-color:rgba(255,255,255,.8)}
 
-/* ---------- Modals ---------- */
-.modal{
-  position:fixed;inset:0;background:rgba(10,10,10,.6);backdrop-filter:blur(6px);
-  display:flex;align-items:center;justify-content:center;padding:1.4rem;
-  z-index:950;opacity:0;visibility:hidden;transition:opacity .4s var(--ease),visibility .4s;
+/* ============================================================
+   Footer
+   ============================================================ */
+footer{background:var(--night);color:rgba(255,255,255,.5);padding-bottom:clamp(2rem,4vw,3rem)}
+.footer__mark{
+  text-align:center;padding-block:clamp(3rem,7vw,5rem);
+  border-top:1px solid rgba(255,255,255,.1);
 }
-.modal.open{opacity:1;visibility:visible}
-.modal-card{
-  background:var(--paper);color:var(--ink-soft);max-width:760px;width:100%;max-height:86vh;
-  overflow-y:auto;padding:clamp(2rem,5vw,3.5rem);position:relative;
-  transform:translateY(20px);transition:transform .4s var(--ease);
+.footer__mark img{width:min(280px,62vw);margin:0 auto;filter:invert(1);opacity:.85}
+.footer__claim{
+  margin-top:1.8rem;font-size:.68rem;letter-spacing:.42em;text-transform:uppercase;
+  color:rgba(255,255,255,.4);
 }
-.modal.open .modal-card{transform:none}
-.modal-card h3{font-size:clamp(1.7rem,3.5vw,2.3rem);margin-bottom:1.8rem}
-.modal-card h4{
-  font-family:'Montserrat',sans-serif;font-weight:500;font-size:.68rem;letter-spacing:.24em;
-  text-transform:uppercase;color:var(--ink);margin:2rem 0 .6rem;
+.footer__bar{
+  display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem 2rem;
+  padding-top:2rem;font-size:.72rem;color:rgba(255,255,255,.38);
 }
-.modal-card p,.modal-card li{font-size:.9rem;margin-bottom:.6rem}
-.modal-card ul{padding-left:1.2rem}
-.modal-close{
-  position:absolute;top:1.1rem;right:1.1rem;background:var(--paper);border:1px solid var(--line);
-  width:40px;height:40px;cursor:pointer;color:var(--ink);font-size:.9rem;z-index:3;
-  transition:all .3s var(--ease);
-}
-.modal-close:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
-.placeholder{background:var(--paper-warm);box-shadow:0 0 0 3px var(--paper-warm);color:var(--ink)}
+.footer__bar nav{display:flex;gap:1.6rem}
+.footer__bar a{transition:color .35s var(--ease)}
+.footer__bar a:hover{color:rgba(255,255,255,.85)}
 
-/* Objekt-Popup */
-.listing-modal{padding:0;max-width:820px}
-.listing-modal .lm-img{width:100%;height:clamp(200px,36vh,340px);background-size:cover;background-position:center;background-color:var(--paper-warm)}
-.listing-modal .lm-inner{padding:clamp(2rem,4.5vw,3rem)}
-.listing-modal .lm-status{font-size:.66rem;letter-spacing:.26em;text-transform:uppercase;color:var(--grey)}
-.listing-modal h3{margin:.8rem 0 1.2rem}
-.lm-desc{font-size:.95rem;margin-bottom:2.2rem;max-width:62ch}
-.lm-facts{list-style:none;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem 1.6rem;margin-bottom:2.4rem}
-.lm-facts li{border-top:1px solid var(--line);padding-top:.8rem}
-.lm-facts .k{display:block;font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--grey);margin-bottom:.35rem}
-.lm-facts .v{font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--ink);line-height:1.2}
+/* ============================================================
+   Reveal animations
+   ============================================================ */
+.rv{opacity:0;transform:translateY(26px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.rv-d1{transition-delay:.09s}
+.rv-d2{transition-delay:.18s}
+.rv-d3{transition-delay:.27s}
+.rv-d4{transition-delay:.36s}
 
-/* ---------- Datenschutz-Hinweis ---------- */
-#privacy-bar{
-  position:fixed;bottom:1.2rem;left:1.2rem;right:1.2rem;max-width:540px;margin:0 auto;
-  background:var(--paper);color:var(--ink-soft);padding:1.5rem 1.7rem;z-index:940;
-  display:flex;gap:1.2rem;align-items:center;flex-wrap:wrap;border:1px solid var(--line);
-  box-shadow:0 24px 60px rgba(10,10,10,.14);
-  transform:translateY(150%);transition:transform .8s var(--ease);
+.line-rv{display:block;overflow:hidden}
+.line-rv > *{
+  display:block;transform:translateY(105%);
+  transition:transform 1.05s var(--ease);
 }
-#privacy-bar.show{transform:none}
-#privacy-bar p{font-size:.78rem;flex:1;min-width:220px;line-height:1.7}
-#privacy-bar a{color:var(--ink)}
-#privacy-bar button{
-  background:var(--ink);border:1px solid var(--ink);color:#fff;padding:.75rem 1.6rem;
-  font-family:'Montserrat',sans-serif;font-weight:400;letter-spacing:.2em;text-transform:uppercase;
-  font-size:.66rem;cursor:pointer;transition:all .4s var(--ease);
-}
-#privacy-bar button:hover{background:transparent;color:var(--ink)}
+.in .line-rv > *,.line-rv.in > *{transform:none}
+.line-rv:nth-child(2) > *{transition-delay:.08s}
+.line-rv:nth-child(3) > *{transition-delay:.16s}
 
-/* ---------- Responsive ---------- */
-@media(max-width:960px){
-  .about,.contact{grid-template-columns:1fr}
-  .portrait{max-width:440px}
-  .services{grid-template-columns:1fr 1fr}
-  .stats{grid-template-columns:1fr 1fr;gap:3rem 0}
-  .stat:nth-child(3){border-left:none}
-  .foot-grid{grid-template-columns:1fr 1fr}
-}
-@media(max-width:680px){
-  .listings{grid-template-columns:1fr}
-  .services{grid-template-columns:1fr}
-  .lm-facts{grid-template-columns:repeat(2,1fr)}
-  .foot-grid{grid-template-columns:1fr;gap:2.5rem}
-  .wordmark{font-size:.92rem;letter-spacing:.18em}
-  .nav-links{
-    position:fixed;inset:0;background:var(--paper);flex-direction:column;
-    align-items:center;justify-content:center;gap:2.2rem;
-    opacity:0;visibility:hidden;transition:.45s var(--ease);
-  }
-  .nav-links.open{opacity:1;visibility:visible}
-  .nav-links a{color:var(--ink)!important;font-size:1rem;letter-spacing:.26em}
-  .brand{position:relative;z-index:10}
-  .burger{display:flex;z-index:10}
-  .burger.open span{background:var(--ink)}
-  .burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-  .burger.open span:nth-child(2){opacity:0}
-  .burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-  .hero-inner{padding-bottom:9rem}
-  .hero-cta{flex-direction:column;width:100%}
-  .hero-cta .btn{width:100%;justify-content:center}
-}
-@media(prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+@media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .reveal{opacity:1;transform:none}
-  .hero-line span{transform:none}
-  .hero-sub,.hero-cta{opacity:1}
-  .hero-bg{animation:none}
+  .rv{opacity:1;transform:none;transition:none}
+  .line-rv > *{transform:none;transition:none}
+  .hero__media,.film__title,.film__kicker{transform:none !important;opacity:1 !important}
+  .scroll-cue i{animation:none}
+  #loader img{animation:none}
 }
-:focus-visible{outline:1px solid var(--ink);outline-offset:4px}
-.dark :focus-visible,header :focus-visible{outline-color:#fff}
 </style>
 </head>
 <body>
 
-<div id="loader" aria-hidden="true"><div class="mark">MM</div></div>
+<div id="progress"></div>
 
-<nav id="nav" aria-label="Hauptnavigation">
-  <a class="brand" href="#top" aria-label="Marcel Michl Immobilien — Startseite">
-    <span class="monogram" aria-hidden="true"><span>M</span><i></i><span>M</span></span>
-    <span class="wordmark">Marcel Michl</span>
+<div id="loader"><img src="assets/logo.png" alt=""></div>
+
+<!-- ===================== NAV ===================== -->
+<header class="nav" id="nav">
+  <a class="brand" href="#top" aria-label="marcel michl — International Real Estate">
+    <img src="assets/logo.png" alt="marcel michl — International Real Estate">
   </a>
-  <button class="burger" id="burger" aria-label="Menü öffnen" aria-expanded="false">
-    <span></span><span></span><span></span>
+  <nav class="menu" aria-label="Main">
+    <a href="#remains">Philosophy</a>
+    <a href="#sale">Approach</a>
+    <a href="#five">Five</a>
+    <a href="#about">About</a>
+    <a href="#realestate">Real Estate</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
+    <span></span><span></span>
   </button>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="#ueber">Über mich</a></li>
-    <li><a href="#objekte">Objekte</a></li>
-    <li><a href="#leistungen">Leistungen</a></li>
-    <li><a href="#kontakt">Kontakt</a></li>
-  </ul>
-</nav>
-
-<header id="top">
-  <div class="hero-media" aria-hidden="true"><div class="hero-bg"></div></div>
-  <div class="hero-scrim" aria-hidden="true"></div>
-  <div class="hero-inner">
-    <h1>
-      <span class="hero-line"><span>Werte, die bleiben.</span></span>
-      <span class="hero-line"><span><em>Häuser, die berühren.</em></span></span>
-    </h1>
-    <p class="hero-sub">Marcel Michl Immobilien<br>Würzburg &amp; Mainfranken</p>
-    <div class="hero-cta">
-      <a class="btn btn-outline" href="#objekte">Objekte ansehen</a>
-      <a class="btn btn-outline" href="#kontakt">Beratung anfragen</a>
-    </div>
-  </div>
-  <div class="scroll-cue" aria-hidden="true">Entdecken</div>
 </header>
 
-<!-- Über mich -->
-<section id="ueber" class="dark on-dark">
-  <div class="wrap about">
-    <figure class="portrait reveal">
-      <img src="images/Marcel%20Michl%20Potrait%20.png" alt="Marcel Michl, Inhaber und International Real Estate Agent">
-    </figure>
-    <div class="about-text">
-      <span class="eyebrow reveal">Über mich</span>
-      <h2 class="reveal">Immobilien sind Vertrauenssache.</h2>
-      <p class="reveal d1" style="margin-top:2rem">Seit über einem Jahrzehnt begleite ich Eigentümer, Käufer und Investoren in Würzburg und Mainfranken — vom ersten vertraulichen Gespräch bis zur Schlüsselübergabe. Mein Anspruch: jede Immobilie so zu vermarkten, als wäre es meine eigene.</p>
-      <p class="reveal d2">Fundierte Marktkenntnis, professionelle Wertermittlung und ein gewachsenes Netzwerk aus Notaren, Finanzierern und Handwerkern sorgen dafür, dass Sie sich um nichts kümmern müssen — außer um Ihre Entscheidung.</p>
-      <p class="sig reveal d3">Marcel Michl<small>Inhaber · International Real Estate Agent</small></p>
+<div id="mobile-menu">
+  <a href="#remains">Philosophy</a>
+  <a href="#sale">Approach</a>
+  <a href="#five">Five</a>
+  <a href="#about">About</a>
+  <a href="#realestate">Real Estate</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<main id="top">
+
+<!-- ===================== HERO ===================== -->
+<section class="hero">
+  <div class="hero__media" id="heroMedia">
+    <img src="assets/residence-01.jpg" alt="International residence at dusk" fetchpriority="high">
+  </div>
+  <div class="hero__inner">
+    <h1 class="hero__tagline">
+      <span class="line-rv"><span>Beyond Frontiers.</span></span>
+      <span class="line-rv"><em>Beside You.</em></span>
+    </h1>
+    <p class="hero__sub rv rv-d2">Your real estate partner in a world without borders.</p>
+    <div class="hero__meta rv rv-d3">
+      <a class="btn btn--light" href="#contact"><span>Start a conversation</span></a>
+      <span class="hero__demand">For those who demand more</span>
+    </div>
+  </div>
+  <div class="scroll-cue" aria-hidden="true"><span>Scroll</span><i></i></div>
+</section>
+
+<!-- ===================== FILM TITLE 01 ===================== -->
+<section class="film" data-film>
+  <div class="film__stage">
+    <h2 class="film__title" data-film-title><span>Beyond</span><span>Borders.</span></h2>
+    <p class="film__kicker" data-film-title>marcel michl — International Real Estate</p>
+  </div>
+</section>
+
+<!-- ===================== MORE THAN A PLACE ===================== -->
+<section class="pad-y" id="remains">
+  <div class="wrap-narrow center">
+    <span class="eyebrow rv">What matters stays with us</span>
+    <h2 class="h-xl rv rv-d1" style="margin-top:1.8rem">Sometimes, more than<br>a place remains.</h2>
+    <div class="stack-lg" style="margin-top:clamp(2.5rem,5vw,4rem)">
+      <p class="verse rv rv-d2 measure mx">We rarely remember the square metres.</p>
+      <p class="verse rv rv-d2 measure mx">
+        We remember a certain light. A view from a window. A room where something began.
+        <em>A place that became part of our lives.</em>
+      </p>
+      <p class="verse rv rv-d3 measure mx">Some places we leave behind. And yet, we carry them with us.</p>
+      <p class="verse rv rv-d3 measure mx">
+        What begins as a property can become a memory. A decision. A departure. A new beginning.
+      </p>
+      <p class="verse rv rv-d4 measure mx"><em>And sometimes, part of who we are.</em></p>
     </div>
   </div>
 </section>
 
-<!-- Objekte -->
-<section id="objekte">
+<!-- ===================== FILM TITLE 02 ===================== -->
+<section class="film" data-film>
+  <div class="film__stage">
+    <h2 class="film__title" data-film-title>
+      <span>Some opportunities</span>
+      <span>appear only once.</span>
+    </h2>
+    <p class="film__kicker" data-film-title>Knowing when to look makes all the difference</p>
+  </div>
+</section>
+
+<!-- ===================== A SALE ===================== -->
+<section class="pad-y" id="sale">
   <div class="wrap">
-    <div class="section-head center">
-      <span class="eyebrow reveal">Referenzen</span>
-      <h2 class="reveal">Eine Auswahl vermittelter Objekte</h2>
-    </div>
-    <div class="listings">
-      <button class="listing reveal" aria-haspopup="dialog"
-        data-img="images/Bildschirmfoto%202026-08-08%20um%2014.15.49.png"
-        data-status="Verkauft · Würzburg-Frauenland"
-        data-title="Stadtvilla am Ringpark"
-        data-place="Würzburg-Frauenland"
-        data-desc="Denkmalgeschützte Stadtvilla in Bestlage am Ringpark — großzügige Raumhöhen, edle Materialien und ein parkähnlicher Garten. Vermittelt an vorgemerkte Interessenten."
-        data-facts='[["Wohnfläche","280 m²"],["Zimmer","7"],["Grundstück","640 m²"],["Baujahr","1908 / san. 2019"],["Energie","B"],["Status","Verkauft in 31 Tagen"]]'>
-        <div class="listing-media"><div class="bg" style="background-image:url('images/Bildschirmfoto%202026-08-08%20um%2014.15.49.png')"></div></div>
-        <div class="listing-body">
-          <div class="status">Verkauft</div>
-          <h3>Stadtvilla am Ringpark<span class="sep">|</span>Frauenland</h3>
-          <p class="facts">280 m² · 7 Zimmer · vermittelt in 31 Tagen</p>
-          <span class="cue">Details ansehen</span>
-        </div>
-      </button>
-
-      <button class="listing reveal d1" aria-haspopup="dialog"
-        data-img="images/Bildschirmfoto%202026-08-08%20um%2014.15.54.png"
-        data-status="Off-Market vermittelt · Altstadt"
-        data-title="Penthouse mit Festungsblick"
-        data-place="Würzburg-Altstadt"
-        data-desc="Exklusive Dachgeschosswohnung über den Dächern der Altstadt mit Blick zur Festung Marienberg. Bodentiefe Fenster, umlaufende Terrasse und hochwertige Ausstattung. Diskrete Off-Market-Vermittlung."
-        data-facts='[["Wohnfläche","160 m²"],["Zimmer","4"],["Terrasse","45 m²"],["Baujahr","2021"],["Energie","A"],["Status","Off-Market vermittelt"]]'>
-        <div class="listing-media"><div class="bg" style="background-image:url('images/Bildschirmfoto%202026-08-08%20um%2014.15.54.png')"></div></div>
-        <div class="listing-body">
-          <div class="status">Off-Market vermittelt</div>
-          <h3>Penthouse Festungsblick<span class="sep">|</span>Altstadt</h3>
-          <p class="facts">160 m² · 4 Zimmer · 45 m² Terrasse</p>
-          <span class="cue">Details ansehen</span>
-        </div>
-      </button>
-
-      <button class="listing reveal" aria-haspopup="dialog"
-        data-img="images/Bildschirmfoto%202026-08-08%20um%2014.16.00.png"
-        data-status="An Investor vermittelt · Veitshöchheim"
-        data-title="Neubau-Ensemble Mainpark"
-        data-place="Veitshöchheim"
-        data-desc="Modernes Wohnensemble in ruhiger Lage nahe dem Main — acht Einheiten mit hochwertiger Ausstattung, Tiefgarage und gepflegten Außenanlagen. Als Renditeobjekt an einen regionalen Investor vermittelt."
-        data-facts='[["Einheiten","8"],["Wohnfläche","720 m²"],["Grundstück","1.150 m²"],["Baujahr","2023"],["Rendite","3,8 %"],["Status","An Investor vermittelt"]]'>
-        <div class="listing-media"><div class="bg" style="background-image:url('images/Bildschirmfoto%202026-08-08%20um%2014.16.00.png')"></div></div>
-        <div class="listing-body">
-          <div class="status">An Investor vermittelt</div>
-          <h3>Ensemble Mainpark<span class="sep">|</span>Veitshöchheim</h3>
-          <p class="facts">8 Einheiten · 720 m² · 3,8 % Rendite</p>
-          <span class="cue">Details ansehen</span>
-        </div>
-      </button>
-
-      <button class="listing reveal d1" aria-haspopup="dialog"
-        data-img="images/Bildschirmfoto%202026-08-08%20um%2014.16.06.png"
-        data-status="Verkauft · Würzburg-Sanderau"
-        data-title="Gartenresidenz am Wasser"
-        data-place="Würzburg-Sanderau"
-        data-desc="Lichtdurchflutete Wohnung in einer parkartigen Wohnanlage mit Wasserlauf, Loungebereich und mediterraner Bepflanzung. Ideale Verbindung aus Stadtnähe und Rückzugsort."
-        data-facts='[["Wohnfläche","210 m²"],["Zimmer","5"],["Garten","120 m²"],["Baujahr","2022"],["Energie","A+"],["Status","Verkauft"]]'>
-        <div class="listing-media"><div class="bg" style="background-image:url('images/Bildschirmfoto%202026-08-08%20um%2014.16.06.png')"></div></div>
-        <div class="listing-body">
-          <div class="status">Verkauft</div>
-          <h3>Gartenresidenz am Wasser<span class="sep">|</span>Sanderau</h3>
-          <p class="facts">210 m² · 5 Zimmer · 120 m² Garten</p>
-          <span class="cue">Details ansehen</span>
-        </div>
-      </button>
+    <div class="split">
+      <div>
+        <span class="eyebrow rv">The approach</span>
+        <h2 class="h-lg rv rv-d1" style="margin-top:1.6rem">A sale doesn’t begin<br>with a brochure.</h2>
+        <p class="lede rv rv-d2 measure" style="margin-top:1.8rem">It begins with understanding.</p>
+        <ul class="quiet-list rv rv-d3" style="margin-top:2.4rem">
+          <li><b>01</b>What does this place mean?</li>
+          <li><b>02</b>What should remain?</li>
+          <li><b>03</b>And what might come next?</li>
+        </ul>
+      </div>
+      <div class="stack">
+        <p class="verse rv rv-d2">Selling a property is about more than achieving a price.</p>
+        <p class="verse rv rv-d3">
+          It is about recognising the right moment, telling its story in the right way and
+          finding the person for whom this particular place can take on a new meaning.
+        </p>
+        <p class="verse rv rv-d4"><em>That takes experience. And attention.</em></p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- Zahlen -->
-<section id="zahlen" class="dark on-dark">
+<!-- ===================== FIVE ===================== -->
+<section class="five pad-y" id="five">
   <div class="wrap">
-    <div class="section-head center">
-      <span class="eyebrow reveal">Zahlen &amp; Fakten</span>
-      <h2 class="reveal">Ergebnisse, die für sich sprechen</h2>
-    </div>
-    <div class="stats">
-      <div class="stat reveal"><div class="num"><span class="count" data-target="240">0</span><sup>+</sup></div><div class="label">Vermittelte<br>Objekte</div></div>
-      <div class="stat reveal d1"><div class="num"><span class="count" data-target="98">0</span><sup>%</sup></div><div class="label">Empfehlungs-<br>quote</div></div>
-      <div class="stat reveal d2"><div class="num"><span class="count" data-target="12">0</span></div><div class="label">Jahre<br>Markterfahrung</div></div>
-      <div class="stat reveal d3"><div class="num"><span class="count" data-target="47">0</span></div><div class="label">Ø Tage bis<br>zum Verkauf</div></div>
+    <div class="five__grid">
+      <div>
+        <span class="eyebrow rv">Each one personal</span>
+        <div class="five__num rv rv-d1" data-count="5" style="margin-top:1.6rem">5</div>
+        <div class="five__label rv rv-d2">Selected properties per year</div>
+      </div>
+      <div class="stack-lg">
+        <h2 class="h-lg rv" style="color:#fff">Five.</h2>
+        <p class="verse rv rv-d1">I deliberately work with only five selected properties each year.</p>
+        <p class="verse rv rv-d2">Not to create artificial scarcity. <em>But because personal work takes time.</em></p>
+        <p class="verse rv rv-d3">
+          Every property needs its own language. Its own imagery. Its own strategy.
+          And sometimes, its own silence.
+        </p>
+        <p class="verse rv rv-d4">
+          Some need visibility. Others discretion. <em>All deserve attention. Personally.</em>
+        </p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- Leistungen -->
-<section id="leistungen" class="warm">
+<!-- ===================== ABOUT MARCEL ===================== -->
+<section class="about" id="about">
+  <div class="about__grid">
+    <div class="about__figure rv">
+      <img src="assets/marcel-portrait.jpg" alt="Marcel Michl, international real estate agent">
+    </div>
+    <div class="about__body">
+      <h2 class="about__title rv">
+        <small>Since 1996</small>
+        About Marcel
+      </h2>
+      <p class="rv rv-d1">
+        Since 1996, I have worked with owners, buyers and projects across different markets
+        and circumstances. Almost three decades in real estate have taught me one thing above all:
+        to know when experience should speak — and when it is better simply to listen.
+      </p>
+      <p class="rv rv-d2">
+        Because no property begins with a marketing strategy. It begins with a person,
+        a situation and a decision. That is why I keep the number of mandates deliberately small,
+        and the attention behind each one deliberately complete.
+      </p>
+      <div class="about__sign rv rv-d3">Marcel Michl — International Real Estate Agent</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== VISIBILITY ===================== -->
+<section class="pad-y" id="visibility">
   <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow reveal">Leistungen</span>
-      <h2 class="reveal">Alles aus einer Hand — diskret, präzise, persönlich.</h2>
+    <div class="center" style="max-width:720px;margin-inline:auto">
+      <span class="eyebrow rv">Presentation</span>
+      <h2 class="h-lg rv rv-d1" style="margin-top:1.6rem">Visibility. When it is right.</h2>
+      <p class="verse rv rv-d2" style="margin-top:1.8rem">
+        Not every property belongs on every platform. And not every property should remain unseen.
+      </p>
+      <p class="verse rv rv-d3" style="margin-top:1.2rem">
+        Some need a stage. Others need the right person at the right moment.
+        <em>That is why the way a property is presented should never begin with a standard process.
+        It should begin with the property itself.</em>
+      </p>
     </div>
-    <div class="services">
-      <article class="service reveal"><span class="no">01</span><h3>Verkauf</h3><p>Marktgerechte Wertermittlung, hochwertige Exposés, gezielte Ansprache vorgemerkter Interessenten — für den bestmöglichen Preis in angemessener Zeit.</p></article>
-      <article class="service reveal d1"><span class="no">02</span><h3>Bewertung</h3><p>Fundierte Immobilienbewertung auf Basis aktueller Marktdaten aus Würzburg und Umgebung — als Grundlage jeder guten Entscheidung.</p></article>
-      <article class="service reveal d2"><span class="no">03</span><h3>Kaufbegleitung</h3><p>Individuelle Suche, Besichtigung, Verhandlung und Begleitung bis zum Notartermin — damit Sie sicher zur richtigen Immobilie finden.</p></article>
-      <article class="service reveal"><span class="no">04</span><h3>Anlageimmobilien</h3><p>Renditeobjekte und Mehrfamilienhäuser mit Substanz: Analyse, Ankauf und diskrete Off-Market-Vermittlung für Investoren.</p></article>
-      <article class="service reveal d1"><span class="no">05</span><h3>Erbe &amp; Nachlass</h3><p>Einfühlsame Begleitung bei geerbten Immobilien — von der Bewertung über die Abstimmung in der Erbengemeinschaft bis zum Verkauf.</p></article>
-      <article class="service reveal d2"><span class="no">06</span><h3>Finanzierungsnetzwerk</h3><p>Zugang zu unabhängigen Finanzierungspartnern, damit Ihr Vorhaben nicht an Konditionen scheitert.</p></article>
+
+    <div class="channels rv" style="margin-top:clamp(3rem,6vw,5rem)">
+      <div><b>01</b><h4>Photography</h4></div>
+      <div><b>02</b><h4>Film</h4></div>
+      <div><b>03</b><h4>Architecture &amp; presentation</h4></div>
+      <div><b>04</b><h4>National &amp; international networks</h4></div>
+      <div><b>05</b><h4>Selected platforms</h4></div>
+      <div><b>06</b><h4>Direct introductions</h4></div>
+      <div><b>07</b><h4>Complete discretion</h4></div>
+      <div><b>08</b><h4>Or nothing at all — by design</h4></div>
+    </div>
+
+    <p class="center rv" style="margin-top:clamp(2.5rem,5vw,3.5rem);font-size:1.05rem;color:var(--ink-2)">
+      As much visibility as makes sense. <em style="font-style:normal;color:var(--ink)">As much restraint as necessary.</em>
+    </p>
+  </div>
+</section>
+
+<!-- ===================== FILM TITLE 03 ===================== -->
+<section class="film" data-film>
+  <div class="film__stage">
+    <h2 class="film__title" data-film-title>
+      <span>Wherever in the world</span>
+      <span>it may be.</span>
+    </h2>
+    <p class="film__kicker" data-film-title>Real estate knows no borders. Neither do opportunities.</p>
+  </div>
+</section>
+
+<!-- ===================== SELECTED REAL ESTATE ===================== -->
+<section class="pad-y" id="realestate">
+  <div class="wrap">
+    <div class="center" style="max-width:640px;margin-inline:auto">
+      <span class="eyebrow rv">Selected real estate</span>
+      <h2 class="h-lg rv rv-d1" style="margin-top:1.6rem">Exceptional real estate does not<br>belong to one particular place.</h2>
+      <p class="lede rv rv-d2 soft" style="margin-top:1.6rem">
+        What matters is its quality, its story and its potential.
+      </p>
+    </div>
+
+    <div class="tiles" style="margin-top:clamp(3.5rem,7vw,6rem)">
+      <article class="tile rv">
+        <figure><img src="assets/residence-02.jpg" alt="Residences" loading="lazy"></figure>
+        <h3>Residences</h3>
+        <p>Homes whose value lies in the life they make possible.</p>
+      </article>
+      <article class="tile rv rv-d1">
+        <figure><img src="assets/residence-03.jpg" alt="Architecture" loading="lazy"></figure>
+        <h3>Architecture</h3>
+        <p>Buildings that were designed, not merely built.</p>
+      </article>
+      <article class="tile rv rv-d2">
+        <figure><img src="assets/residence-04.jpg" alt="Investments" loading="lazy"></figure>
+        <h3>Investments</h3>
+        <p>Assets judged by substance, location and horizon.</p>
+      </article>
+      <article class="tile rv rv-d3">
+        <figure><img src="assets/residence-05.jpg" alt="Developments" loading="lazy"></figure>
+        <h3>Developments</h3>
+        <p>Projects at the moment their potential becomes visible.</p>
+      </article>
     </div>
   </div>
 </section>
 
-<!-- Kontakt -->
-<section id="kontakt">
-  <div class="wrap contact">
-    <div class="contact-info">
-      <span class="eyebrow reveal">Kontakt</span>
-      <h2 class="reveal">Sprechen wir über<br>Ihre Immobilie.</h2>
-      <p class="reveal d1 lede" style="margin-top:1.8rem">Ob Verkauf, Bewertung oder Suche — die erste Beratung ist unverbindlich und selbstverständlich vertraulich.</p>
-      <div class="contact-meta reveal d2">
-        <div><div class="k">Adresse</div><div class="v">Obere Saline 39<br>97688 Bad Kissingen</div></div>
-        <div><div class="k">Telefon</div><div class="v"><a href="tel:+491626909925">+49 162 6909925</a></div></div>
-        <div><div class="k">E-Mail</div><div class="v"><a href="mailto:michl@marcelmichl.com">michl@marcelmichl.com</a></div></div>
-      </div>
+<!-- ===================== PERSONAL ===================== -->
+<section class="pad-y" style="background:var(--paper-soft)" id="personal">
+  <div class="wrap-narrow center">
+    <span class="eyebrow rv">Personal</span>
+    <div class="stack-lg" style="margin-top:2rem">
+      <p class="h-md rv rv-d1">A property can be an investment.</p>
+      <p class="h-md rv rv-d2">A home.</p>
+      <p class="h-md rv rv-d3">A life’s work.</p>
+      <p class="h-md rv rv-d4">Or the beginning of something new.</p>
     </div>
-    <form id="contactForm" novalidate class="reveal d1">
-      <div class="field">
-        <input type="text" id="name" name="name" placeholder=" " required autocomplete="name">
-        <label for="name">Ihr Name *</label>
-      </div>
-      <div class="field">
-        <input type="email" id="email" name="email" placeholder=" " required autocomplete="email">
-        <label for="email">E-Mail-Adresse *</label>
-      </div>
-      <div class="field">
-        <input type="tel" id="phone" name="phone" placeholder=" " autocomplete="tel">
-        <label for="phone">Telefon (optional)</label>
-      </div>
-      <div class="field">
-        <textarea id="message" name="message" placeholder=" " required></textarea>
-        <label for="message">Ihre Nachricht *</label>
-      </div>
-      <!-- Honeypot gegen Spam -->
-      <div class="hp" aria-hidden="true">
-        <label for="website">Website</label>
-        <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
-      </div>
-      <label class="consent">
-        <input type="checkbox" id="consent" required>
-        <span>Ich habe die <a href="#" data-modal="datenschutz">Datenschutzerklärung</a> gelesen und willige ein, dass meine Angaben zur Bearbeitung meiner Anfrage erhoben und verarbeitet werden. Die Einwilligung kann ich jederzeit mit Wirkung für die Zukunft widerrufen (Art. 6 Abs. 1 lit. a DSGVO). *</span>
-      </label>
-      <p class="form-note">* Pflichtfelder. Es werden nur die Daten erhoben, die zur Bearbeitung Ihrer Anfrage erforderlich sind (Grundsatz der Datenminimierung).</p>
-      <button type="submit" class="btn">Nachricht senden</button>
-      <p id="form-status" role="status" aria-live="polite"></p>
-    </form>
+    <hr class="rule rv" style="margin:clamp(2.5rem,5vw,3.5rem) auto;max-width:120px">
+    <p class="verse rv measure mx">That is why there is no standard way to sell one.</p>
+    <p class="verse rv rv-d1 measure mx" style="margin-top:1rem">
+      <em>There is only the right way for that particular property — and for the people behind it.</em>
+    </p>
   </div>
 </section>
 
+<!-- ===================== CONTACT ===================== -->
+<section class="contact pad-y" id="contact">
+  <div class="wrap">
+    <div class="split" style="align-items:start">
+      <div>
+        <span class="eyebrow rv">Contact</span>
+        <h2 class="h-lg rv rv-d1" style="margin-top:1.6rem">
+          Do you have something<br>special to sell?
+        </h2>
+        <p class="verse rv rv-d2" style="margin-top:1.6rem"><em>I’d like to hear about it.</em></p>
+        <p class="verse rv rv-d3" style="margin-top:1.6rem">
+          A first conversation does not have to be a decision.
+          Sometimes, it is simply the beginning of an idea.
+          And sometimes, the beginning of something exceptional.
+        </p>
+
+        <div class="contact__direct rv rv-d4">
+          <div>
+            <b>Email</b>
+            <a href="mailto:info@marcelmichl.com">info@marcelmichl.com</a>
+          </div>
+          <div>
+            <b>Phone</b>
+            <a href="tel:+490000000000">+49 (0) 000 000 000</a>
+          </div>
+          <div>
+            <b>By appointment</b>
+            <span>Worldwide — and discreet</span>
+          </div>
+        </div>
+      </div>
+
+      <form class="form rv rv-d2" id="contactForm">
+        <div class="row">
+          <div class="field">
+            <label for="f-name">Name</label>
+            <input id="f-name" name="name" type="text" placeholder="Your name" required>
+          </div>
+          <div class="field">
+            <label for="f-mail">Email</label>
+            <input id="f-mail" name="email" type="email" placeholder="you@example.com" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="f-subject">The property</label>
+          <input id="f-subject" name="subject" type="text" placeholder="Location, type — a first hint is enough">
+        </div>
+        <div class="field">
+          <label for="f-msg">Your message</label>
+          <textarea id="f-msg" name="message" placeholder="What should I know?" required></textarea>
+        </div>
+        <div class="form__foot">
+          <button class="btn btn--light" type="submit"><span>Send message</span></button>
+          <p class="form__note">Your enquiry is treated confidentially. No listing, no obligation — simply a first conversation.</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===================== FOOTER ===================== -->
 <footer>
-  <div class="foot-grid">
-    <div class="foot-brand">
-      <a class="brand" href="#top" style="display:inline-flex">
-        <span class="monogram" aria-hidden="true"><span>M</span><i></i><span>M</span></span>
-        <span class="wordmark">Marcel Michl</span>
-      </a>
-      <p>Diskrete Vermittlung exklusiver Wohn- und Anlageimmobilien in Würzburg und Mainfranken.</p>
+  <div class="wrap">
+    <div class="footer__mark">
+      <img src="assets/logo.png" alt="marcel michl — International Real Estate">
+      <p class="footer__claim">Beyond Borders.</p>
     </div>
-    <div class="foot-col">
-      <h4>Navigation</h4>
-      <ul>
-        <li><a href="#ueber">Über mich</a></li>
-        <li><a href="#objekte">Objekte</a></li>
-        <li><a href="#leistungen">Leistungen</a></li>
-        <li><a href="#kontakt">Kontakt</a></li>
-      </ul>
+    <div class="footer__bar">
+      <span>© <span id="year">2026</span> Marcel Michl — International Real Estate</span>
+      <nav>
+        <a href="#imprint">Imprint</a>
+        <a href="#privacy">Privacy</a>
+        <a href="#top">Back to top</a>
+      </nav>
     </div>
-    <div class="foot-col">
-      <h4>Kontakt</h4>
-      <ul>
-        <li><a href="tel:+491626909925">+49 162 6909925</a></li>
-        <li><a href="mailto:michl@marcelmichl.com">michl@marcelmichl.com</a></li>
-        <li>Obere Saline 39, 97688 Bad Kissingen</li>
-        <li><button data-modal="impressum">Impressum</button></li>
-        <li><button data-modal="datenschutz">Datenschutz</button></li>
-      </ul>
-    </div>
-  </div>
-  <div class="foot-bottom">
-    <span>© <span id="year"></span> Marcel Michl Immobilien</span>
-    <span>Bad Kissingen · Würzburg · Mainfranken</span>
   </div>
 </footer>
 
-<!-- Objekt-Popup -->
-<div class="modal" id="modal-listing" role="dialog" aria-modal="true" aria-labelledby="lm-title">
-  <div class="modal-card listing-modal">
-    <button class="modal-close" data-close aria-label="Schließen">✕</button>
-    <div class="lm-img" id="lm-img"></div>
-    <div class="lm-inner">
-      <div class="lm-status" id="lm-status"></div>
-      <h3 id="lm-title"></h3>
-      <p class="lm-desc" id="lm-desc"></p>
-      <ul class="lm-facts" id="lm-facts"></ul>
-      <a href="#kontakt" class="btn" id="lm-contact">Kontakt aufnehmen</a>
-    </div>
-  </div>
-</div>
-
-<!-- Impressum Modal -->
-<div class="modal" id="modal-impressum" role="dialog" aria-modal="true" aria-labelledby="imp-title">
-  <div class="modal-card">
-    <button class="modal-close" data-close aria-label="Schließen">✕</button>
-    <h3 id="imp-title">Impressum</h3>
-    <h4>Angaben gemäß § 5 DDG</h4>
-    <p><strong>Marcel Michl Immobilien</strong><br>
-    Inhaber: Marcel Michl<br>
-    Obere Saline 39<br>
-    97688 Bad Kissingen</p>
-    <h4>Kontakt</h4>
-    <p>Telefon: +49 162 6909925<br>
-    E-Mail: michl@marcelmichl.com</p>
-    <h4>Aufsichtsbehörde &amp; Erlaubnis</h4>
-    <p>Gewerbeerlaubnis nach § 34c GewO, erteilt durch: <span class="placeholder">zuständige Behörde in Bad Kissingen (z. B. Landratsamt Bad Kissingen, Gewerbeamt) — bitte ergänzen</span></p>
-    <h4>Steuernummer</h4>
-    <p>Steuernummer: 205/251/40122</p>
-    <h4>Berufshaftpflichtversicherung</h4>
-    <p><span class="placeholder">Name und Sitz des Versicherers, Geltungsraum der Versicherung</span></p>
-    <h4>Verbraucherstreitbeilegung</h4>
-    <p>Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen (§ 36 VSBG).</p>
-    <h4>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h4>
-    <p>Marcel Michl, Anschrift wie oben.</p>
-    <p style="margin-top:1.5rem;font-size:.8rem"><em>Hinweis: Die markierten Platzhalter müssen vor Veröffentlichung durch die echten Angaben ersetzt werden. Dieses Impressum ist eine Vorlage und ersetzt keine Rechtsberatung.</em></p>
-  </div>
-</div>
-
-<!-- Datenschutz Modal -->
-<div class="modal" id="modal-datenschutz" role="dialog" aria-modal="true" aria-labelledby="ds-title">
-  <div class="modal-card">
-    <button class="modal-close" data-close aria-label="Schließen">✕</button>
-    <h3 id="ds-title">Datenschutzerklärung</h3>
-    <h4>1. Verantwortlicher</h4>
-    <p>Marcel Michl Immobilien, Inhaber Marcel Michl, Obere Saline 39, 97688 Bad Kissingen, E-Mail: michl@marcelmichl.com</p>
-    <h4>2. Erhebung und Verarbeitung personenbezogener Daten</h4>
-    <p>Beim Besuch dieser Website werden durch den Hosting-Anbieter automatisch technisch notwendige Daten (z.&nbsp;B. IP-Adresse, Datum und Uhrzeit des Zugriffs, Browsertyp) in Server-Logfiles verarbeitet. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der sicheren Bereitstellung der Website).</p>
-    <h4>3. Kontaktformular</h4>
-    <p>Wenn Sie uns über das Kontaktformular kontaktieren, verarbeiten wir die von Ihnen angegebenen Daten (Name, E-Mail-Adresse, ggf. Telefonnummer, Nachricht) ausschließlich zur Bearbeitung Ihrer Anfrage. Rechtsgrundlage ist Ihre Einwilligung nach Art. 6 Abs. 1 lit. a DSGVO sowie ggf. Art. 6 Abs. 1 lit. b DSGVO (vorvertragliche Maßnahmen). Ihre Daten werden gelöscht, sobald sie für die Bearbeitung nicht mehr erforderlich sind und keine gesetzlichen Aufbewahrungspflichten entgegenstehen.</p>
-    <h4>4. Cookies und Tracking</h4>
-    <p>Diese Website verwendet keine Tracking-, Analyse- oder Marketing-Cookies. Es werden ausschließlich technisch notwendige Funktionen genutzt; hierfür ist keine Einwilligung erforderlich (§ 25 Abs. 2 TDDDG).</p>
-    <h4>5. Externe Schriftarten</h4>
-    <p>Diese Website bindet Schriftarten von Google Fonts ein. Dabei wird Ihre IP-Adresse an Server von Google übertragen. <strong>Empfehlung für den Live-Betrieb:</strong> Google Fonts lokal einbinden (selbst hosten), um eine Datenübertragung in Drittländer zu vermeiden — dies ist die datenschutzrechtlich sichere Variante nach dem Urteil des LG München I (Az. 3 O 17493/20).</p>
-    <h4>6. Ihre Rechte</h4>
-    <ul>
-      <li>Auskunft (Art. 15 DSGVO)</li>
-      <li>Berichtigung (Art. 16 DSGVO)</li>
-      <li>Löschung (Art. 17 DSGVO)</li>
-      <li>Einschränkung der Verarbeitung (Art. 18 DSGVO)</li>
-      <li>Datenübertragbarkeit (Art. 20 DSGVO)</li>
-      <li>Widerspruch (Art. 21 DSGVO)</li>
-      <li>Widerruf erteilter Einwilligungen mit Wirkung für die Zukunft (Art. 7 Abs. 3 DSGVO)</li>
-    </ul>
-    <h4>7. Beschwerderecht</h4>
-    <p>Sie haben das Recht, sich bei einer Datenschutz-Aufsichtsbehörde zu beschweren, z.&nbsp;B. beim Bayerischen Landesamt für Datenschutzaufsicht (BayLDA), Promenade 18, 91522 Ansbach.</p>
-    <p style="margin-top:1.5rem;font-size:.8rem"><em>Hinweis: Diese Datenschutzerklärung ist eine Vorlage. Sie muss an die tatsächlich eingesetzten Dienste (Hosting, E-Mail-Versand des Formulars, ggf. Karten, Analyse-Tools) angepasst und idealerweise anwaltlich geprüft werden.</em></p>
-  </div>
-</div>
-
-<!-- Datenschutz-Hinweisleiste -->
-<div id="privacy-bar" role="region" aria-label="Datenschutzhinweis">
-  <p>Diese Website verwendet keine Tracking-Cookies — nur technisch notwendige Funktionen. Details in der <a href="#" data-modal="datenschutz">Datenschutzerklärung</a>.</p>
-  <button id="privacy-ok">Verstanden</button>
-</div>
-
 <script>
-// Preloader
-window.addEventListener('load',()=>{
-  setTimeout(()=>document.getElementById('loader').classList.add('done'),500);
-});
+(function(){
+  'use strict';
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-// Nav-Zustand + dezente Hero-Parallaxe
-const nav=document.getElementById('nav');
-const heroMedia=document.querySelector('.hero-media');
-const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
-let ticking=false;
-function onScroll(){
-  nav.classList.toggle('scrolled',scrollY>60);
-  if(heroMedia && !reducedMotion){
-    const y=Math.min(scrollY,innerHeight);
-    heroMedia.style.transform='translate3d(0,'+(y*0.22)+'px,0)';
-  }
-  ticking=false;
-}
-addEventListener('scroll',()=>{
-  if(!ticking){requestAnimationFrame(onScroll);ticking=true;}
-},{passive:true});
-
-// Mobiles Menü
-const burger=document.getElementById('burger'),links=document.getElementById('navLinks');
-function setMenu(open){
-  links.classList.toggle('open',open);
-  burger.classList.toggle('open',open);
-  nav.classList.toggle('menu-open',open);
-  burger.setAttribute('aria-expanded',open);
-  burger.setAttribute('aria-label',open?'Menü schließen':'Menü öffnen');
-}
-burger.addEventListener('click',()=>setMenu(!links.classList.contains('open')));
-links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
-
-// Scroll-Reveal
-const io=new IntersectionObserver(es=>es.forEach(e=>{
-  if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
-}),{threshold:.12});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-
-// Zähler
-const statIO=new IntersectionObserver(es=>es.forEach(e=>{
-  if(!e.isIntersecting)return;
-  const el=e.target,target=+el.dataset.target;
-  statIO.unobserve(el);
-  if(reducedMotion){el.textContent=target;return;}
-  const t0=performance.now(),dur=1700;
-  (function tick(t){
-    const p=Math.min((t-t0)/dur,1),eased=1-Math.pow(1-p,3);
-    el.textContent=Math.round(target*eased);
-    if(p<1)requestAnimationFrame(tick);
-  })(t0);
-}),{threshold:.5});
-document.querySelectorAll('.count').forEach(el=>statIO.observe(el));
-
-// Modals
-const openModal=id=>{
-  document.getElementById('modal-'+id).classList.add('open');
-  document.body.style.overflow='hidden';
-};
-const closeModals=()=>{
-  document.querySelectorAll('.modal.open').forEach(m=>m.classList.remove('open'));
-  document.body.style.overflow='';
-};
-document.querySelectorAll('[data-modal]').forEach(b=>b.addEventListener('click',e=>{
-  e.preventDefault();openModal(b.dataset.modal);
-}));
-document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',closeModals));
-document.querySelectorAll('.modal').forEach(m=>m.addEventListener('click',e=>{
-  if(e.target===m)closeModals();
-}));
-addEventListener('keydown',e=>{if(e.key==='Escape')closeModals();});
-
-// Objekt-Popup mit Eckdaten
-const listingModal=document.getElementById('modal-listing');
-function openListing(card){
-  document.getElementById('lm-img').style.backgroundImage="url('"+card.dataset.img+"')";
-  document.getElementById('lm-status').textContent=card.dataset.status||'';
-  document.getElementById('lm-title').textContent=card.dataset.title||'';
-  document.getElementById('lm-desc').textContent=card.dataset.desc||'';
-  const list=document.getElementById('lm-facts');
-  list.innerHTML='';
-  let facts=[];
-  try{facts=JSON.parse(card.dataset.facts||'[]');}catch(err){facts=[];}
-  facts.forEach(([k,v])=>{
-    const li=document.createElement('li');
-    const ks=document.createElement('span');ks.className='k';ks.textContent=k;
-    const vs=document.createElement('span');vs.className='v';vs.textContent=v;
-    li.append(ks,vs);list.appendChild(li);
+  /* ---------- preloader ---------- */
+  window.addEventListener('load', function(){
+    setTimeout(function(){ document.getElementById('loader').classList.add('done'); }, 320);
   });
-  listingModal.classList.add('open');
-  document.body.style.overflow='hidden';
-}
-document.querySelectorAll('.listing').forEach(card=>{
-  card.addEventListener('click',()=>openListing(card));
-});
-document.getElementById('lm-contact').addEventListener('click',closeModals);
+  setTimeout(function(){ document.getElementById('loader').classList.add('done'); }, 3500);
 
-// Datenschutz-Hinweis (nur für diese Sitzung im Speicher)
-let privacyDismissed=false;
-setTimeout(()=>{if(!privacyDismissed)document.getElementById('privacy-bar').classList.add('show');},1800);
-document.getElementById('privacy-ok').addEventListener('click',()=>{
-  privacyDismissed=true;
-  document.getElementById('privacy-bar').classList.remove('show');
-});
+  /* ---------- year ---------- */
+  document.getElementById('year').textContent = new Date().getFullYear();
 
-// Kontaktformular (Demo-Validierung — Versand serverseitig anbinden!)
-const form=document.getElementById('contactForm'),status=document.getElementById('form-status');
-form.addEventListener('submit',e=>{
-  e.preventDefault();
-  if(form.website.value){return;} // Honeypot
-  if(!form.checkValidity()){
-    status.textContent='Bitte füllen Sie alle Pflichtfelder aus und bestätigen Sie die Datenschutzerklärung.';
-    form.reportValidity();
-    return;
+  /* ---------- nav ---------- */
+  var nav = document.getElementById('nav');
+  var burger = document.getElementById('burger');
+  burger.addEventListener('click', function(){
+    var open = document.body.classList.toggle('menu-open');
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  document.querySelectorAll('#mobile-menu a').forEach(function(a){
+    a.addEventListener('click', function(){
+      document.body.classList.remove('menu-open');
+      burger.setAttribute('aria-expanded','false');
+    });
+  });
+
+  /* ---------- reveal on scroll ---------- */
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold:.14, rootMargin:'0px 0px -8% 0px' });
+  document.querySelectorAll('.rv, .line-rv').forEach(function(el){ io.observe(el); });
+
+  /* ---------- scroll-linked work ---------- */
+  var progress = document.getElementById('progress');
+  var heroMedia = document.getElementById('heroMedia');
+  var films = Array.prototype.slice.call(document.querySelectorAll('[data-film]'));
+  var sections = Array.prototype.slice.call(document.querySelectorAll('main section[id]'));
+  var links = Array.prototype.slice.call(document.querySelectorAll('.menu a'));
+  var ticking = false;
+
+  function clamp(v,a,b){ return v<a?a:(v>b?b:v); }
+
+  function frame(){
+    ticking = false;
+    var y = window.scrollY || window.pageYOffset;
+    var vh = window.innerHeight;
+    var doc = document.documentElement.scrollHeight - vh;
+
+    /* progress bar */
+    progress.style.transform = 'scaleX(' + (doc>0 ? clamp(y/doc,0,1) : 0) + ')';
+
+    /* nav state */
+    nav.classList.toggle('scrolled', y > vh * 0.72);
+
+    if(!reduce){
+      /* hero parallax */
+      if(y < vh * 1.3){
+        heroMedia.style.transform = 'translate3d(0,' + (y * 0.26) + 'px,0)';
+      }
+
+      /* film title cards: scale + fade across their sticky range */
+      films.forEach(function(film){
+        var r = film.getBoundingClientRect();
+        if(r.bottom < -vh || r.top > vh * 1.5) return;
+        var total = r.height - vh;
+        var p = clamp((-r.top) / (total > 0 ? total : 1), 0, 1);      /* 0 -> 1 */
+        var eased = p;
+        film.querySelectorAll('[data-film-title]').forEach(function(t){
+          /* fade in 0–.30, hold .30–.70, fade back out .70–1 */
+          var opIn  = clamp(eased / 0.30, 0, 1);
+          var opOut = 1 - clamp((eased - 0.70) / 0.30, 0, 1);
+          t.style.opacity = Math.min(opIn, opOut);
+          t.style.transform = 'translate3d(0,' + ((0.5 - eased) * 60) + 'px,0) scale(' + (0.955 + eased * 0.09) + ')';
+        });
+      });
+    }
+
+    /* active nav link */
+    var current = '';
+    sections.forEach(function(s){
+      if(s.getBoundingClientRect().top <= vh * 0.42) current = s.id;
+    });
+    links.forEach(function(a){
+      a.setAttribute('aria-current', a.getAttribute('href') === '#' + current ? 'true' : 'false');
+    });
   }
-  status.textContent='Vielen Dank, ' + form.name.value.split(' ')[0] + ' — Ihre Nachricht wurde übermittelt. Ich melde mich zeitnah bei Ihnen.';
-  form.reset();
-});
 
-document.getElementById('year').textContent=new Date().getFullYear();
+  function onScroll(){
+    if(!ticking){ ticking = true; requestAnimationFrame(frame); }
+  }
+  window.addEventListener('scroll', onScroll, { passive:true });
+  window.addEventListener('resize', onScroll);
+  frame();
+
+  /* ---------- counter for FIVE ---------- */
+  var counter = document.querySelector('[data-count]');
+  if(counter){
+    var cio = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(!e.isIntersecting) return;
+        cio.unobserve(e.target);
+        if(reduce) return;
+        var target = parseInt(e.target.getAttribute('data-count'), 10);
+        var n = 0, step = 90;
+        var t = setInterval(function(){
+          n++; e.target.textContent = n;
+          if(n >= target) clearInterval(t);
+        }, step);
+        e.target.textContent = '0';
+      });
+    }, { threshold:.5 });
+    cio.observe(counter);
+  }
+
+  /* ---------- contact form (mailto, no backend) ---------- */
+  var form = document.getElementById('contactForm');
+  form.addEventListener('submit', function(ev){
+    ev.preventDefault();
+    var d = new FormData(form);
+    var subject = 'Enquiry — ' + (d.get('subject') || 'Real estate') ;
+    var body =
+      'Name: ' + (d.get('name') || '') + '\n' +
+      'Email: ' + (d.get('email') || '') + '\n' +
+      'Property: ' + (d.get('subject') || '') + '\n\n' +
+      (d.get('message') || '');
+    window.location.href = 'mailto:info@marcelmichl.com'
+      + '?subject=' + encodeURIComponent(subject)
+      + '&body=' + encodeURIComponent(body);
+  });
+})();
 </script>
 </body>
 </html>
