@@ -69,6 +69,16 @@ h1,h2,h3,h4{font-weight:500;line-height:1.2;letter-spacing:-.01em}
 .lede{font-size:clamp(1rem,1.25vw,1.18rem);font-weight:300;line-height:1.85;color:var(--ink-2)}
 .soft{color:var(--muted)}
 .center{text-align:center}
+.justify{text-align:justify;hyphens:auto;-webkit-hyphens:auto}
+/* Zweizeilige Ueberschrift im Blocksatz: jede Zeile ein eigener Block,
+   damit text-align-last sie auf die volle Breite zieht */
+.head-justify{max-width:16.6em;margin-inline:auto}
+.head-justify span{display:block;text-align:justify;text-align-last:justify}
+@media (max-width:560px){
+  .head-justify{max-width:none}
+  .head-justify span{text-align:center;text-align-last:center}
+}
+@media (max-width:640px){.justify{text-align:left;hyphens:manual}}
 .measure{max-width:58ch}
 .measure-narrow{max-width:44ch}
 .mx{margin-left:auto;margin-right:auto}
@@ -77,9 +87,46 @@ h1,h2,h3,h4{font-weight:500;line-height:1.2;letter-spacing:-.01em}
 .wrap-narrow{width:100%;max-width:880px;margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
 section{position:relative}
 .pad-y{padding-block:clamp(5.5rem,12vw,11rem)}
+/* Ankersprung: Nav verdeckt nichts, und die Sektions-Polsterung
+   wird mitgerechnet, damit oben kein toter Raum stehen bleibt */
+main section[id]{scroll-margin-top:var(--nav-h)}
+main section.pad-y[id]{scroll-margin-top:calc(var(--nav-h) + 2.5rem - clamp(5.5rem,12vw,11rem))}
 .pad-y-sm{padding-block:clamp(4rem,8vw,7rem)}
 
 .rule{height:1px;background:var(--line);border:0}
+
+/* ---------- Statement-Zeilen (Personal): Scroll-Betonung ---------- */
+.statement{display:grid;gap:clamp(.7rem,1.5vw,1.15rem);justify-items:start}
+/* linksbuendig, aber als Block mittig auf der Seite */
+.personal__col{max-width:34em;margin-inline:auto;text-align:left}
+.statement__line{
+  font-size:clamp(1.25rem,2vw,1.6rem);font-weight:500;line-height:1.2;
+  color:var(--ink);position:relative;margin:0;
+}
+/* die beiden kurzen Zeilen tragen mehr Gewicht */
+.statement__line.is-accent{font-size:clamp(1.55rem,2.8vw,2.3rem)}
+.statement__line.is-accent::after{
+  content:"";position:absolute;left:0;right:0;bottom:-.34em;height:1px;
+  background:var(--ink);opacity:.28;
+  transform:scaleX(0);transform-origin:50% 50%;
+  transition:transform .8s var(--ease);
+}
+
+/* nur mit JS: Zeilen treten nacheinander hervor */
+.statement.is-live .statement__line{
+  opacity:.2;transform:translateY(14px);
+  transition:opacity .8s var(--ease),transform .8s var(--ease);
+}
+.statement.is-live .statement__line.is-accent{opacity:.16;transform:translateY(18px)}
+.statement.is-live .statement__line.is-in{opacity:1;transform:none}
+.statement.is-live .statement__line.is-accent.is-in::after{transform:scaleX(1)}
+
+.personal-quiet .verse{line-height:1.78}
+
+@media (prefers-reduced-motion:reduce){
+  .statement.is-live .statement__line{opacity:1;transform:none}
+  .statement.is-live .statement__line.is-accent::after{transform:scaleX(1)}
+}
 
 /* ============================================================
    Scroll progress
@@ -197,19 +244,30 @@ body.menu-open #mobile-menu a:nth-child(6){transition-delay:.40s}
   color:#fff;
 }
 .hero__tagline{
-  font-size:clamp(2.4rem,7vw,5.6rem);font-weight:500;line-height:1.05;letter-spacing:-.02em;
-  max-width:16ch;
+  font-size:clamp(2rem,5.3vw,4.4rem);font-weight:500;line-height:1.08;letter-spacing:-.02em;
+  max-width:none;
 }
-.hero__tagline em{font-style:normal;display:block;font-weight:200;color:rgba(255,255,255,.88)}
+.hero__tagline em{font-style:normal;display:inline;font-weight:200;color:rgba(255,255,255,.88)}
 .hero__sub{
-  margin-top:1.6rem;font-size:clamp(.95rem,1.4vw,1.12rem);font-weight:300;
-  color:rgba(255,255,255,.78);max-width:42ch;line-height:1.75;
+  margin-top:1.4rem;font-size:clamp(1.02rem,1.55vw,1.3rem);font-weight:300;
+  color:rgba(255,255,255,.78);max-width:none;line-height:1.6;
+  display:flex;flex-wrap:wrap;align-items:baseline;gap:.55rem clamp(.8rem,1.8vw,1.4rem);
 }
 .hero__meta{
-  margin-top:2.6rem;display:flex;flex-wrap:wrap;align-items:center;gap:1.6rem 2.4rem;
+  margin-top:2.6rem;display:flex;flex-wrap:wrap;align-items:center;
+  justify-content:center;gap:1.6rem 2.4rem;
 }
 .hero__demand{
-  font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.62);
+  /* erbt Schriftart, -groesse, -gewicht und Laufweite von .hero__sub */
+  color:rgba(255,255,255,.62);white-space:nowrap;
+}
+.hero__demand::before{
+  content:"";display:inline-block;vertical-align:middle;
+  width:clamp(14px,3vw,56px);height:1px;margin-right:clamp(.6rem,1.4vw,1.4rem);
+  background:rgba(255,255,255,.34);
+}
+@media (max-width:719px){
+  .hero__demand::before{display:none}
 }
 .scroll-cue{
   position:absolute;right:var(--pad);bottom:clamp(3.5rem,8vh,6rem);
@@ -236,7 +294,15 @@ body.menu-open #mobile-menu a:nth-child(6){transition-delay:.40s}
 }
 .btn:hover::before{transform:scaleX(1);transform-origin:0 50%}
 .btn--light{color:#fff}
-.btn--light:hover{color:var(--night)}
+.btn--light::before{background:rgba(255,255,255,.16)}
+.btn--light:hover{color:#fff;border-color:rgba(255,255,255,.9)}
+/* gefuellte Variante: hebt sich klar vom dunklen Grund ab */
+.btn--solid{
+  color:var(--night);background:#fff;border-color:#fff;
+  font-weight:500;letter-spacing:.26em;padding:1.15rem 2.6rem;
+}
+.btn--solid::before{background:rgba(0,0,0,.14)}
+.btn--solid:hover{color:var(--night);border-color:#fff}
 .btn--dark{color:var(--ink)}
 .btn--dark:hover{color:#fff}
 
@@ -276,6 +342,56 @@ body.menu-open #mobile-menu a:nth-child(6){transition-delay:.40s}
 }
 @media (max-width:860px){.split{grid-template-columns:1fr}}
 
+/* ---------- The approach: Fragen links, Antworten rechts ---------- */
+.approach{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:clamp(2.5rem,6vw,6rem);align-items:start;
+}
+.approach__intro{position:sticky;top:calc(var(--nav-h) + clamp(1.5rem,5vh,4rem))}
+
+/* etwas engerer Zeilenabstand als im Rest der Seite */
+.approach .lede{line-height:1.7}
+.approach .verse{line-height:1.78}
+.approach .quiet-list li{line-height:1.5}
+
+.approach__answer{display:flex;align-items:center}
+
+/* Nur wenn JS den Scroll-Effekt aktiviert: Hoehe, Abblenden, Hervorheben */
+.approach.is-live .approach__answer{
+  min-height:clamp(300px,58vh,560px);
+  opacity:.22;transform:translateY(16px);
+  transition:opacity .75s var(--ease),transform .75s var(--ease);
+}
+.approach.is-live .approach__answer.is-active{opacity:1;transform:none}
+
+/* aktive Frage markieren */
+.approach .quiet-list li{
+  position:relative;
+  transition:color .5s var(--ease);
+}
+.approach .quiet-list li b{transition:color .5s var(--ease)}
+.approach.is-live .quiet-list li.is-current{color:var(--ink)}
+.approach.is-live .quiet-list li.is-current b{color:var(--ink)}
+.approach .quiet-list li::after{
+  content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;background:var(--ink);
+  transform:scaleX(0);transform-origin:0 50%;transition:transform .6s var(--ease);
+}
+.approach.is-live .quiet-list li.is-current::after{transform:scaleX(1)}
+
+@media (max-width:860px){
+  .approach{grid-template-columns:1fr}
+  .approach__intro{position:static}
+  .approach__answers > * + *{margin-top:1.45rem}
+  /* Fallback unabhaengig vom JS: nie abgeblendet, keine Mindesthoehe */
+  .approach.is-live .approach__answer{min-height:0;opacity:1;transform:none}
+  .approach.is-live .quiet-list li.is-current{color:var(--ink-2)}
+  .approach.is-live .quiet-list li.is-current b{color:var(--muted-2)}
+  .approach.is-live .quiet-list li.is-current::after{transform:scaleX(0)}
+}
+@media (prefers-reduced-motion:reduce){
+  .approach.is-live .approach__answer{min-height:0;opacity:1;transform:none}
+}
+
 .quiet-list{list-style:none}
 .quiet-list li{
   padding:1.05rem 0;border-bottom:1px solid var(--line);
@@ -296,7 +412,7 @@ body.menu-open #mobile-menu a:nth-child(6){transition-delay:.40s}
    FIVE — dark counter section
    ============================================================ */
 .five{background:var(--night);color:#fff;overflow:hidden}
-.five .eyebrow{color:rgba(255,255,255,.42)}
+.five .eyebrow{color:rgba(255,255,255,.42);font-size:.84rem;letter-spacing:.28em}
 .five__grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(2.5rem,6vw,6rem);align-items:center}
 @media (max-width:860px){.five__grid{grid-template-columns:1fr}}
 .five__num{
@@ -308,12 +424,12 @@ body.menu-open #mobile-menu a:nth-child(6){transition-delay:.40s}
   background:rgba(255,255,255,.3);margin-top:clamp(1.5rem,3vw,2.6rem);
 }
 .five__label{
-  margin-top:1.4rem;font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;
+  margin-top:1.4rem;font-size:.84rem;letter-spacing:.28em;text-transform:uppercase;
   color:rgba(255,255,255,.5);
 }
 .five p{color:rgba(255,255,255,.72)}
 .five .verse em{color:#fff}
-.five .verse{color:rgba(255,255,255,.75)}
+.five .verse{color:rgba(255,255,255,.75);line-height:1.78}
 
 /* ============================================================
    About Marcel  (layout after the reference screenshot)
@@ -447,16 +563,26 @@ body.menu-open #mobile-menu a:nth-child(6){transition-delay:.40s}
 .contact__direct{
   margin-top:clamp(3rem,6vw,4.5rem);padding-top:clamp(2rem,4vw,3rem);
   border-top:1px solid rgba(255,255,255,.14);
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));
-  gap:2rem;
+  /* drei Spalten, jede so breit wie ihr Inhalt - damit alle drei
+     Kontaktpunkte in einer Zeile nebeneinander stehen bleiben */
+  display:grid;grid-template-columns:repeat(3,auto);justify-content:space-between;
+  gap:1.6rem clamp(1.1rem,2.6vw,2.6rem);
 }
 .contact__direct b{
   display:block;font-size:.6rem;font-weight:400;letter-spacing:.26em;text-transform:uppercase;
-  color:rgba(255,255,255,.4);margin-bottom:.7rem;
+  color:rgba(255,255,255,.4);margin-bottom:.7rem;white-space:nowrap;
 }
-.contact__direct a,.contact__direct span{font-size:1rem;font-weight:300;color:rgba(255,255,255,.88)}
+.contact__direct a,.contact__direct span{
+  font-size:clamp(.82rem,1.02vw,1rem);font-weight:300;color:rgba(255,255,255,.88);
+  white-space:nowrap;
+}
 .contact__direct a{border-bottom:1px solid rgba(255,255,255,.2);padding-bottom:2px;transition:border-color .4s var(--ease)}
 .contact__direct a:hover{border-bottom-color:rgba(255,255,255,.8)}
+/* auf schmalen Schirmen reicht die Breite fuer drei Spalten nicht mehr */
+@media (max-width:560px){
+  .contact__direct{grid-template-columns:1fr;justify-content:start}
+  .contact__direct a,.contact__direct span{font-size:1rem;white-space:normal}
+}
 
 /* ============================================================
    Footer
@@ -467,6 +593,19 @@ footer{background:var(--night);color:rgba(255,255,255,.5);padding-bottom:clamp(2
   border-top:1px solid rgba(255,255,255,.1);
 }
 .footer__mark img{width:min(280px,62vw);margin:0 auto;filter:invert(1);opacity:.85}
+/* Logo erscheint beim Hereinscrollen von rechts nach links.
+   Die Maske ist dreimal so breit wie das Bild: transparent im ersten
+   Drittel, nach rechts hin weich deckend werdend. Sie wandert nach
+   links ueber das Bild, wodurch das Logo von rechts her sichtbar wird. */
+.wipe{
+  -webkit-mask-image:linear-gradient(90deg,rgba(0,0,0,0) 0 38%,#000 66.667% 100%);
+  mask-image:linear-gradient(90deg,rgba(0,0,0,0) 0 38%,#000 66.667% 100%);
+  -webkit-mask-size:300% 100%;mask-size:300% 100%;
+  -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
+  -webkit-mask-position:0 0;mask-position:0 0;
+  transition:-webkit-mask-position 1.5s var(--ease),mask-position 1.5s var(--ease);
+}
+.wipe.in{-webkit-mask-position:100% 0;mask-position:100% 0}
 .footer__claim{
   margin-top:1.8rem;font-size:.68rem;letter-spacing:.42em;text-transform:uppercase;
   color:rgba(255,255,255,.4);
@@ -502,6 +641,7 @@ footer{background:var(--night);color:rgba(255,255,255,.5);padding-bottom:clamp(2
   html{scroll-behavior:auto}
   .rv{opacity:1;transform:none;transition:none}
   .line-rv > *{transform:none;transition:none}
+  .wipe{-webkit-mask-image:none;mask-image:none;transition:none}
   .hero__media,.film__title,.film__kicker{transform:none !important;opacity:1 !important}
   .scroll-cue i{animation:none}
   #loader img{animation:none}
@@ -550,13 +690,14 @@ footer{background:var(--night);color:rgba(255,255,255,.5);padding-bottom:clamp(2
   </div>
   <div class="hero__inner">
     <h1 class="hero__tagline">
-      <span class="line-rv"><span>Beyond Frontiers.</span></span>
-      <span class="line-rv"><em>Beside You.</em></span>
+      <span class="line-rv"><span>Beyond Frontiers. <em>Beside You.</em></span></span>
     </h1>
-    <p class="hero__sub rv rv-d2">Your real estate partner in a world without borders.</p>
+    <p class="hero__sub rv rv-d2">
+      <span class="hero__sub-main">Your real estate partner in a world without borders.</span>
+      <span class="hero__demand">For those who demand more</span>
+    </p>
     <div class="hero__meta rv rv-d3">
       <a class="btn btn--light" href="#contact"><span>Start a conversation</span></a>
-      <span class="hero__demand">For those who demand more</span>
     </div>
   </div>
   <div class="scroll-cue" aria-hidden="true"><span>Scroll</span><i></i></div>
@@ -572,20 +713,20 @@ footer{background:var(--night);color:rgba(255,255,255,.5);padding-bottom:clamp(2
 
 <!-- ===================== MORE THAN A PLACE ===================== -->
 <section class="pad-y" id="remains">
-  <div class="wrap-narrow center">
+  <div class="wrap-narrow">
     <span class="eyebrow rv">What matters stays with us</span>
-    <h2 class="h-xl rv rv-d1" style="margin-top:1.8rem">Sometimes, more than<br>a place remains.</h2>
+    <h2 class="h-lg rv rv-d1" style="margin-top:1.6rem">Sometimes, more than<br>a place remains.</h2>
     <div class="stack-lg" style="margin-top:clamp(2.5rem,5vw,4rem)">
-      <p class="verse rv rv-d2 measure mx">We rarely remember the square metres.</p>
-      <p class="verse rv rv-d2 measure mx">
+      <p class="verse justify rv rv-d2 measure">We rarely remember the square metres.</p>
+      <p class="verse justify rv rv-d2 measure">
         We remember a certain light. A view from a window. A room where something began.
         <em>A place that became part of our lives.</em>
       </p>
-      <p class="verse rv rv-d3 measure mx">Some places we leave behind. And yet, we carry them with us.</p>
-      <p class="verse rv rv-d3 measure mx">
+      <p class="verse justify rv rv-d3 measure">Some places we leave behind. And yet, we carry them with us.</p>
+      <p class="verse justify rv rv-d3 measure">
         What begins as a property can become a memory. A decision. A departure. A new beginning.
       </p>
-      <p class="verse rv rv-d4 measure mx"><em>And sometimes, part of who we are.</em></p>
+      <p class="verse justify rv rv-d4 measure"><em>And sometimes, part of who we are.</em></p>
     </div>
   </div>
 </section>
@@ -604,24 +745,30 @@ footer{background:var(--night);color:rgba(255,255,255,.5);padding-bottom:clamp(2
 <!-- ===================== A SALE ===================== -->
 <section class="pad-y" id="sale">
   <div class="wrap">
-    <div class="split">
-      <div>
+    <div class="approach" data-approach>
+      <div class="approach__intro">
         <span class="eyebrow rv">The approach</span>
         <h2 class="h-lg rv rv-d1" style="margin-top:1.6rem">A sale doesn’t begin<br>with a brochure.</h2>
         <p class="lede rv rv-d2 measure" style="margin-top:1.8rem">It begins with understanding.</p>
         <ul class="quiet-list rv rv-d3" style="margin-top:2.4rem">
-          <li><b>01</b>What does this place mean?</li>
-          <li><b>02</b>What should remain?</li>
-          <li><b>03</b>And what might come next?</li>
+          <li data-q="1"><b>01</b>What does this place mean?</li>
+          <li data-q="2"><b>02</b>What should remain?</li>
+          <li data-q="3"><b>03</b>And what might come next?</li>
         </ul>
       </div>
-      <div class="stack">
-        <p class="verse rv rv-d2">Selling a property is about more than achieving a price.</p>
-        <p class="verse rv rv-d3">
-          It is about recognising the right moment, telling its story in the right way and
-          finding the person for whom this particular place can take on a new meaning.
-        </p>
-        <p class="verse rv rv-d4"><em>That takes experience. And attention.</em></p>
+      <div class="approach__answers">
+        <div class="approach__answer" data-a="1">
+          <p class="verse">Selling a property is about more than achieving a price.</p>
+        </div>
+        <div class="approach__answer" data-a="2">
+          <p class="verse">
+            It is about recognising the right moment, telling its story in the right way and
+            finding the person for whom this particular place can take on a new meaning.
+          </p>
+        </div>
+        <div class="approach__answer" data-a="3">
+          <p class="verse"><em>That takes experience. And attention.</em></p>
+        </div>
       </div>
     </div>
   </div>
@@ -725,9 +872,12 @@ footer{background:var(--night);color:rgba(255,255,255,.5);padding-bottom:clamp(2
 <!-- ===================== SELECTED REAL ESTATE ===================== -->
 <section class="pad-y" id="realestate">
   <div class="wrap">
-    <div class="center" style="max-width:640px;margin-inline:auto">
+    <div class="center" style="max-width:720px;margin-inline:auto">
       <span class="eyebrow rv">Selected real estate</span>
-      <h2 class="h-lg rv rv-d1" style="margin-top:1.6rem">Exceptional real estate does not<br>belong to one particular place.</h2>
+      <h2 class="h-lg rv rv-d1 head-justify" style="margin-top:1.6rem">
+        <span>Exceptional real estate does not</span>
+        <span>belong to one particular place.</span>
+      </h2>
       <p class="lede rv rv-d2 soft" style="margin-top:1.6rem">
         What matters is its quality, its story and its potential.
       </p>
@@ -759,20 +909,22 @@ footer{background:var(--night);color:rgba(255,255,255,.5);padding-bottom:clamp(2
 </section>
 
 <!-- ===================== PERSONAL ===================== -->
-<section class="pad-y" style="background:var(--paper-soft)" id="personal">
-  <div class="wrap-narrow center">
-    <span class="eyebrow rv">Personal</span>
-    <div class="stack-lg" style="margin-top:2rem">
-      <p class="h-md rv rv-d1">A property can be an investment.</p>
-      <p class="h-md rv rv-d2">A home.</p>
-      <p class="h-md rv rv-d3">A life’s work.</p>
-      <p class="h-md rv rv-d4">Or the beginning of something new.</p>
+<section class="pad-y personal-quiet" style="background:var(--paper-soft)" id="personal">
+  <div class="wrap-narrow">
+    <div class="personal__col">
+      <span class="eyebrow rv">Personal</span>
+      <div class="statement" data-statement style="margin-top:2rem">
+        <p class="statement__line" data-line>A property can be an investment.</p>
+        <p class="statement__line is-accent" data-line>A home.</p>
+        <p class="statement__line is-accent" data-line>A life’s work.</p>
+        <p class="statement__line" data-line>Or the beginning of something new.</p>
+      </div>
+      <hr class="rule rv" style="margin:clamp(2.2rem,4vw,3rem) 0;max-width:120px">
+      <p class="verse rv">That is why there is no standard way to sell one.</p>
+      <p class="verse rv rv-d1" style="margin-top:.8rem">
+        <em>There is only the right way for that particular property — and for the people behind it.</em>
+      </p>
     </div>
-    <hr class="rule rv" style="margin:clamp(2.5rem,5vw,3.5rem) auto;max-width:120px">
-    <p class="verse rv measure mx">That is why there is no standard way to sell one.</p>
-    <p class="verse rv rv-d1 measure mx" style="margin-top:1rem">
-      <em>There is only the right way for that particular property — and for the people behind it.</em>
-    </p>
   </div>
 </section>
 
@@ -828,7 +980,7 @@ footer{background:var(--night);color:rgba(255,255,255,.5);padding-bottom:clamp(2
           <textarea id="f-msg" name="message" placeholder="What should I know?" required></textarea>
         </div>
         <div class="form__foot">
-          <button class="btn btn--light" type="submit"><span>Send message</span></button>
+          <button class="btn btn--light btn--solid" type="submit"><span>Send message</span></button>
           <p class="form__note">Your enquiry is treated confidentially. No listing, no obligation — simply a first conversation.</p>
         </div>
       </form>
@@ -842,7 +994,7 @@ footer{background:var(--night);color:rgba(255,255,255,.5);padding-bottom:clamp(2
 <footer>
   <div class="wrap">
     <div class="footer__mark">
-      <img src="assets/logo.png" alt="marcel michl — International Real Estate">
+      <img class="wipe" src="assets/logo.png" alt="marcel michl — International Real Estate">
       <p class="footer__claim">Beyond Borders.</p>
     </div>
     <div class="footer__bar">
@@ -890,7 +1042,7 @@ footer{background:var(--night);color:rgba(255,255,255,.5);padding-bottom:clamp(2
       if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
     });
   }, { threshold:.14, rootMargin:'0px 0px -8% 0px' });
-  document.querySelectorAll('.rv, .line-rv').forEach(function(el){ io.observe(el); });
+  document.querySelectorAll('.rv, .line-rv, .wipe').forEach(function(el){ io.observe(el); });
 
   /* ---------- scroll-linked work ---------- */
   var progress = document.getElementById('progress');
@@ -953,6 +1105,78 @@ footer{background:var(--night);color:rgba(255,255,255,.5);padding-bottom:clamp(2
   window.addEventListener('scroll', onScroll, { passive:true });
   window.addEventListener('resize', onScroll);
   frame();
+
+  /* ---------- The approach: Frage <-> Antwort beim Scrollen ---------- */
+  var approach = document.querySelector('[data-approach]');
+  if(approach && 'IntersectionObserver' in window){
+    var qs = Array.prototype.slice.call(approach.querySelectorAll('[data-q]'));
+    var as = Array.prototype.slice.call(approach.querySelectorAll('[data-a]'));
+    var wide = window.matchMedia('(min-width: 861px)');
+
+    function setPair(n){
+      as.forEach(function(el){ el.classList.toggle('is-active', el.getAttribute('data-a') === n); });
+      qs.forEach(function(el){ el.classList.toggle('is-current', el.getAttribute('data-q') === n); });
+    }
+
+    /* Schmales Band in der Viewport-Mitte: was dort steht, ist aktiv */
+    var aio = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting) setPair(e.target.getAttribute('data-a'));
+      });
+    }, { rootMargin:'-45% 0px -45% 0px', threshold:0 });
+
+    function syncApproach(){
+      if(wide.matches && !reduce){
+        approach.classList.add('is-live');
+        as.forEach(function(el){ aio.observe(el); });
+        if(!approach.querySelector('.approach__answer.is-active')) setPair('1');
+      } else {
+        approach.classList.remove('is-live');
+        as.forEach(function(el){ aio.unobserve(el); el.classList.remove('is-active'); });
+        qs.forEach(function(el){ el.classList.remove('is-current'); });
+      }
+    }
+    syncApproach();
+    if(wide.addEventListener) wide.addEventListener('change', syncApproach);
+    else if(wide.addListener) wide.addListener(syncApproach);
+  }
+
+  /* ---------- Statement-Zeilen: nacheinander hervortreten ----------
+     Bewusst ueber getBoundingClientRect statt IntersectionObserver:
+     der Observer meldet seinen ersten Stand, bevor die Bilder geladen
+     sind und das Dokument seine endgueltige Hoehe hat - dann gelten
+     alle Zeilen faelschlich als sichtbar. Diese Pruefung rechnet bei
+     jedem Scrollen neu und kann sich daher nicht verrennen. */
+  var statement = document.querySelector('[data-statement]');
+  if(statement){
+    statement.classList.add('is-live');
+    var pending = Array.prototype.slice.call(statement.querySelectorAll('[data-line]'));
+
+    function revealLines(){
+      if(!pending.length) return;
+      var vh = window.innerHeight, shown = 0, rest = [];
+      pending.forEach(function(el){
+        var r = el.getBoundingClientRect();
+        if(r.top < vh * 0.84 && r.bottom > 0){
+          var delay = reduce ? 0 : shown * 90;
+          shown++;
+          setTimeout(function(){ el.classList.add('is-in'); }, delay);
+        } else {
+          rest.push(el);
+        }
+      });
+      pending = rest;
+      if(!pending.length){
+        window.removeEventListener('scroll', revealLines);
+        window.removeEventListener('resize', revealLines);
+      }
+    }
+
+    window.addEventListener('scroll', revealLines, { passive:true });
+    window.addEventListener('resize', revealLines);
+    window.addEventListener('load', revealLines);
+    revealLines();
+  }
 
   /* ---------- counter for FIVE ---------- */
   var counter = document.querySelector('[data-count]');
