@@ -269,6 +269,22 @@ body.menu-open #mobile-menu a:nth-child(6){transition-delay:.40s}
 @media (max-width:719px){
   .hero__demand::before{display:none}
 }
+/* Hero-Schrift wie im Film: jede Phrase erscheint Zeichen fuer Zeichen
+   von links nach rechts mit weicher Vorderkante - ohne Bewegung.
+   Die Zeichen-Spans entstehen erst per JS; ohne JS steht der Text normal da. */
+.ty-w{white-space:nowrap}
+.ty-c{opacity:0;transition-property:opacity;transition-timing-function:cubic-bezier(.3,0,.3,1)}
+.ty-run .ty-c{opacity:1}
+.hero--typing .hero__demand::before{opacity:0;transition:opacity .7s var(--ease)}
+.hero--typing .hero__meta{opacity:0;transform:translateY(10px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+/* Strich und Button haengen am selben Startsignal wie die Zeichen,
+   nur mit eigener Verzoegerung - so laufen sie nie auseinander */
+.hero--typing.ty-run .hero__demand::before{opacity:1;transition-delay:var(--ty-dash,0s)}
+.hero--typing.ty-run .hero__meta{opacity:1;transform:none;transition-delay:var(--ty-btn,0s)}
+.sr-only{
+  position:absolute;width:1px;height:1px;margin:-1px;padding:0;border:0;
+  overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;
+}
 .scroll-cue{
   position:absolute;right:var(--pad);bottom:clamp(3.5rem,8vh,6rem);
   display:flex;flex-direction:column;align-items:center;gap:.9rem;z-index:2;
@@ -690,13 +706,13 @@ footer{background:var(--night);color:rgba(255,255,255,.5);padding-bottom:clamp(2
   </div>
   <div class="hero__inner">
     <h1 class="hero__tagline">
-      <span class="line-rv"><span>Beyond Frontiers. <em>Beside You.</em></span></span>
+      <span data-ty>Beyond Frontiers.</span> <em data-ty>Beside You.</em>
     </h1>
-    <p class="hero__sub rv rv-d2">
-      <span class="hero__sub-main">Your real estate partner in a world without borders.</span>
-      <span class="hero__demand">For those who demand more</span>
+    <p class="hero__sub">
+      <span class="hero__sub-main" data-ty>Your real estate partner in a world without borders.</span>
+      <span class="hero__demand"><span data-ty>For those</span> <span data-ty>who demand more</span></span>
     </p>
-    <div class="hero__meta rv rv-d3">
+    <div class="hero__meta">
       <a class="btn btn--light" href="#contact"><span>Start a conversation</span></a>
     </div>
   </div>
@@ -1014,10 +1030,82 @@ footer{background:var(--night);color:rgba(255,255,255,.5);padding-bottom:clamp(2
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ---------- preloader ---------- */
-  window.addEventListener('load', function(){
-    setTimeout(function(){ document.getElementById('loader').classList.add('done'); }, 320);
-  });
-  setTimeout(function(){ document.getElementById('loader').classList.add('done'); }, 3500);
+  function hideLoader(){
+    document.getElementById('loader').classList.add('done');
+    runHero();
+  }
+  window.addEventListener('load', function(){ setTimeout(hideLoader, 320); });
+  setTimeout(hideLoader, 3500);
+
+  /* ---------- Hero-Schrift: Einblendung wie im Referenzfilm ----------
+     Zeitplan dem Film nachgemessen, je Phrase [Start, Dauer] in Sekunden:
+     Beyond Frontiers. / Beside You. / Unterzeile / For those / who demand more */
+  var hero = document.querySelector('.hero');
+  var phrases = hero ? Array.prototype.slice.call(hero.querySelectorAll('[data-ty]')) : [];
+  var tyPlan = [[0,1.35],[2.75,1.25],[4.95,1.6],[8.0,.75],[9.5,1.25]];
+  var heroStarted = false;
+
+  if(phrases.length && !reduce){
+    hero.classList.add('hero--typing');
+    var tyLast = tyPlan[tyPlan.length - 1];
+    hero.style.setProperty('--ty-dash', tyPlan[3][0] + 's');
+    hero.style.setProperty('--ty-btn', (tyLast[0] + tyLast[1] + .3).toFixed(2) + 's');
+    phrases.forEach(function(el, n){
+      var text = el.textContent;
+      var p = tyPlan[n] || tyPlan[tyPlan.length - 1];
+      var glyphs = Array.from(text.replace(/\s+/g, '')).length || 1;
+      var step = p[1] / glyphs;
+      /* weiche Kante: jedes Zeichen braucht ~4,5 Schritte zum Aufblenden */
+      var fade = Math.min(.5, Math.max(.22, step * 4.5));
+      var k = 0;
+      var sr = document.createElement('span');
+      sr.className = 'sr-only'; sr.textContent = text;
+      var vis = document.createElement('span');
+      vis.setAttribute('aria-hidden', 'true');
+      text.split(/(\s+)/).forEach(function(part){
+        if(!part) return;
+        if(/^\s+$/.test(part)){ vis.appendChild(document.createTextNode(' ')); return; }
+        var w = document.createElement('span'); w.className = 'ty-w';
+        Array.from(part).forEach(function(ch){
+          var c = document.createElement('span'); c.className = 'ty-c'; c.textContent = ch;
+          c.style.transitionDelay = (p[0] + k * step).toFixed(3) + 's';
+          c.style.transitionDuration = fade.toFixed(3) + 's';
+          w.appendChild(c); k++;
+        });
+        vis.appendChild(w);
+      });
+      el.setAttribute('data-ty-text', text);
+      el.textContent = '';
+      el.appendChild(sr); el.appendChild(vis);
+    });
+  }
+
+  function runHero(){
+    if(heroStarted || !phrases.length || reduce) return;
+    /* in einem Hintergrund-Tab erst starten, wenn er sichtbar wird -
+       sonst laeuft die Einblendung ab, ohne dass sie jemand sieht */
+    if(document.hidden){
+      document.addEventListener('visibilitychange', function onVis(){
+        if(document.hidden) return;
+        document.removeEventListener('visibilitychange', onVis);
+        runHero();
+      });
+      return;
+    }
+    heroStarted = true;
+    /* kurz warten, bis der Loader ausgeblendet ist */
+    setTimeout(function(){
+      void hero.offsetWidth;
+      hero.classList.add('ty-run');
+      /* danach wieder normaler Text (volle Unterschneidung, kein DOM-Ballast) -
+         ausgeloest vom tatsaechlichen Ende des letzten Zeichens, nicht von
+         einem Timer, der bei gedrosselten Tabs vorlaufen koennte */
+      var all = hero.querySelectorAll('.ty-c');
+      all[all.length - 1].addEventListener('transitionend', function(){
+        phrases.forEach(function(el){ el.textContent = el.getAttribute('data-ty-text'); });
+      }, { once:true });
+    }, 550);
+  }
 
   /* ---------- year ---------- */
   document.getElementById('year').textContent = new Date().getFullYear();
